@@ -1,0 +1,85 @@
+<?php 
+include "akses.php"; 
+?>
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+
+        <br><br><br>
+        <!-- menampilkan grafik dengan id chartContainer -->
+        <!-- ukuran grafik: tinggi = 550 piksel, dan maksimal lebar 920 piksel -->
+        <div id="chartContainer" style="height: 500px; max-width: 920px; margin: 0px auto;"></div>
+
+
+        <!-- import libaray canvasjs dan jquery dengan cdn  -->
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        <script>
+            window.onload = function () {
+
+                //inisialisasi data array dps kepanjangan dari datapoints
+                var dps = [];
+                var dataLength = 10; // panjang data yang ditampilkan (horizontal), ditampilkan di bagian bawah grafik
+                var updateInterval = 500; //setiap 1,5 dtk data direfresh
+                var xVal = 0; 
+                var yVal = 0; 
+
+                //inisialisasi chart js
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    title: {
+                        text: "Bitcoin" //memberi judul grafik
+                    },
+                    data: [{
+                        type: "line", //tipe grafik yang digunakan, lihat di situsnya untuk lihat gaya lain
+                        dataPoints: dps //dps adalah data yang digunakan
+                    }]
+                });
+
+                var updateChart = function (count) {
+                    // data bitcoin yang digunakan https://api.coindesk.com/v1/bpi/currentprice.json
+                    $.getJSON("https://api.coindesk.com/v1/bpi/currentprice.json", function (data) {
+
+                        var USD = data.bpi.USD.rate_float //mengambil data spesifik rate_float
+                        console.log(USD) //menampilkan data dengan console.log hanya terlihat saat mode inspect element
+                        yVal = USD // mengisi variabel yVal dengan data usd
+
+                        count = count || 1;
+
+                        //melakukan perulangan data dengan for agar data dapat dijalankan
+                        for (var j = 0; j < count; j++) {
+                            dps.push({
+                                x: xVal,
+                                y: yVal
+                            });
+                            xVal++;
+                        }
+
+                        //jika datapoints telah melewati datalength
+                        if (dps.length > dataLength) {
+                            dps.shift(); //maka hapus data awal dengan fungsi shift()
+                        }
+
+                    })
+                    chart.render();
+                };
+
+                //jalankan fungsi updateChart di atas
+                updateChart(dataLength);
+
+                //fungsi agar data dapat diupdate setiap 1000 detik sekali
+                setInterval(function () {
+                    updateChart()
+                }, updateInterval);
+            }
+
+        </script>
+    </body>
+</html>
+
+

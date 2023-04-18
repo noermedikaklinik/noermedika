@@ -1,0 +1,20 @@
+-supplier
+ -add v
+ -edit
+ -blok v
+konsulen
+  -add v
+  -edit
+  -blok
+akun
+  -add
+  -edit
+  -blok
+produk
+  -add
+  -edit
+  -add stok
+jasa
+  -add v
+  -edit
+  -hapus v
