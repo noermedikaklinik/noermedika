@@ -446,3 +446,34 @@ fieldset {
   height: fit-content;
   padding-top: 100px;
 }
+.pagination-button{
+  width: 70px !important;
+  background-color: white;
+  border: #2d3436 2px solid;
+  border-radius: 0;
+  padding: 2px 0px;
+  height: 30px;
+}
+.pagination-button:hover{
+  background-color: #2d3436;
+  color: white;
+}
+#paging-button{
+  padding: 20px;
+  float: right;
+}
+.container-message{
+  padding:10px 40px;
+  float: left;
+  width: 100%;
+}
+.container-modal{
+  max-height: 80%;
+  overflow-y: scroll;
+}
+.icon-button{
+  cursor: pointer;
+}
+.align-center{
+  text-align: center;
+}

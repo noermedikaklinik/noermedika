@@ -1,4 +1,4 @@
-<td valign="top" style="width:30%;height:600px;padding:0px;">
+<td valign="top">
     <table align="center" style="width:100%;height:100px;background:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);border-radius:10px;">
         <td style="padding:20px;"><table width="100%">
         <td colspan="2" align="center"><img src="staff-image/<?php echo "$akses[foto]"; ?>" style="width:30%;height:auto;margin-top:15px;border-radius:100%;"></td></tr>
@@ -9,12 +9,9 @@
         <td style="width:75%;">: <?php echo "$akses[nama]"; ?></td></tr>
         <td style="width:25%;">Posisi</td>
         <td style="width:75%;">: <?php echo "$akses[jabatan]"; ?></td></tr>
-        <td style="width:25%;">Tanggal / Jam</td>
-        <td style="width:75%;">: <?php echo "$tglnow $jamnow"; ?></td></tr>
         <td style="width:25%;">Total Trx</td>
         <td style="width:75%;">: Rp. <?php echo "$user_trxrp"; ?></td></tr>
         <td colspan="2" align="center"><hr style="border:0px;height:1px;background:#d1d1d1;"></td></tr>
-        <td colspan="2" align="center"><?php include "jam.php"; ?></td></tr>
         <td colspan="2">
             <script>
             function absensi_karyawan(bookURL){window.open(bookURL,"bookDetails","width=750,height=550,top=100px,left=400px,left=400px;");}

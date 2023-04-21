@@ -18,21 +18,15 @@ $user_trxrp    = number_format($user_trx,0,",",".");
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="../link/mystyle.css?<?php echo date('m/d/Y h:i:s a', time());?>" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-grid.css"/>
         <script type="text/javascript">$(window).load(function() { $("#loading").fadeOut("slow"); })</script>
-        <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<style>
-</style>
-
 <link rel="stylesheet" type="text/css" href="../link/jquery.fancybox.css">
-<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="../link/jquery.fancybox.js"></script>
 <script type="text/javascript">$("[data-fancybox]").fancybox({ });</script>
 
@@ -121,7 +115,7 @@ if(isset($_GET['alert'])){
         });    
     </script>
 
-    <div class="container" style="width:100%;">
+    <div class="container-message">
         <div class="<?php echo "$alert"; ?>" role="alert">
         <center><?php echo "$message"; ?></center>
         </div>

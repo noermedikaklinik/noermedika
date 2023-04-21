@@ -37,12 +37,9 @@ $("#contactus-submit").html('Submit');
 });
 </script>
 
-<div style="height:100px;"></div>
+<div style="height:80px;"></div>
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <form name="form1" method="post" action="penjualan-produk2" enctype="multipart/form-data">
 <input type="hidden" name="kode_trx" value="<?php echo "$kode"; ?>">
@@ -57,42 +54,26 @@ $("#contactus-submit").html('Submit');
 
 <td style="width:65%;background:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);border-radius:10px;">
 <table width="95%" align="center">
-<td align="center" width="13%" style="padding:10px;"><i class="fa fa-plus-circle" style="color:grey;font-size:27px;" onclick="document.getElementById('id03').style.display='block'"></i><br>Jasa Lainnya</td>
-<td align="center" width="10%" style="padding:10px;"><i class="fa fa-search" style="color:grey;font-size:27px;" onclick="document.getElementById('id02').style.display='block'"></i><br>Cari Item</td> 
-</table>
-
-<table width="95%" align="center">
-    <td style="padding:10px;width:100%;">
-    <input type="text" name="id_produk" autocomplete="off" style="width:100%;" list="nama_produk" autofocus>
-    <datalist id="nama_produk">
-    <?php 
-    $qry=mysqli_query($koneksi, "SELECT * From db_produk order by nama_produk asc");
-    while ($t=mysqli_fetch_array($qry)) {
-    $hargarp  = number_format($t["harga_jual"],0,",",".");
-
-    $sqlpengunjung    = "select sum(jumlah) kunjung from db_stock_produk where id_produk like '$t[id_produk]'";
-    $resultpengunjung = mysqli_query($koneksi, $sqlpengunjung);
-    $pengunjung1      = mysqli_fetch_object($resultpengunjung);
-    $jml_stock        = $pengunjung1->kunjung;
-
-    $sqlpengunjung    = "select sum(qty) kunjung from db_penjualan where id_produk like '$t[id_produk]' and status like '1'";
-    $resultpengunjung = mysqli_query($koneksi, $sqlpengunjung);
-    $pengunjung2      = mysqli_fetch_object($resultpengunjung);
-    $jml_terjual      = $pengunjung2->kunjung;
-
-    $sisa_stock       = $jml_stock - $jml_terjual;
-
-    echo "<option value='$t[id_produk]'>$t[nama_produk] - Rp. $hargarp / $t[satuan_produk] (Persediaan : $sisa_stock)</option>";
-    }
-    ?>
-    </datalist>
+  <tr>
+    <td align="center" width="13%" style="padding:10px;">
+      <div class="icon-button">
+        <i class="fa fa-plus-circle" style="color:grey;font-size:27px;" onclick="document.getElementById('id03').style.display='block'"></i>
+        <br>Jasa Lainnya
+      </div>
     </td>
-    <td align="right" style="padding:0px;width:0%;"><fieldset><button style="margin-top:10px;background:white;width:0px;" name="submit" type="submit" id="contactus-submit" data-submit="...Sending"><i id="icon" class=""></i></button></form></td></tr>
+    <td align="center" width="10%" style="padding:10px;">
+      <div class="icon-button">
+        <i class="fa fa-search" style="color:grey;font-size:27px;" onclick="document.getElementById('id02').style.display='block'"></i>
+        <br>Cari Barang  
+      </div>
+    </td> 
+  </tr>
 </table>
+
 
 <table width="95%" align="center">
 <td style="width:100%;padding:10px;">
-<iframe src="frame-transaksi-penjualan.php?kode_trx=<?php echo "$kode_trx"; ?>" style="width:100%;height:250px;border:2px solid #d1d1d1;" scrolling="yes"></iframe>
+<?php include "frame-transaksi-penjualan.php"?>
 </td></tr>
 </table>
 
@@ -112,10 +93,11 @@ $grand_totalrp    = number_format($grand_total,0,",",".");
 
 
 
-<table width="95%" align="center">
-<td style="width:90%;">&nbsp;</td>
-<td style="width:10%;" align="center" style="padding:10px;"><i class='fa fa-print' style='color:grey;font-size:27px;' onclick="document.getElementById('id01').style.display='block'"></i><br>Cetak Nota</form></td></tr>
-</table>
+<div class ="row px-3 justify-content-end flex">
+  <div class="icon-button col-2 align-center align-self-end">
+    <i class='fa fa-print' style='color:grey;font-size:27px;' onclick="document.getElementById('id01').style.display='block'"></i><br>Cetak Nota</form>
+  </div>
+</div>
 
 </td>
 </table>
@@ -133,7 +115,7 @@ $grand_totalrp    = number_format($grand_total,0,",",".");
     <div class="imgcontainer" style="margin-top:-20px;width:80%;">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" style="margin-top:15px;">&times;</span>
     </div>
-    <div class="container" style="width:65%;">
+    <div class="modal-container" style="width:65%;">
 
 <script>
     function choosetype(){
@@ -166,8 +148,8 @@ $grand_totalrp    = number_format($grand_total,0,",",".");
     <td valign="top" width="50%">
     <table width="90%" align="center" style="margin-top:35px;">
     <td><b>Data Billing</b></td></tr>
-    <td><br>Nama Pasien<br><input name="nama" type="text" style="width:100%;" placeholder="nama pasien" autocomplete="off" <?php echo "$required";?>></td></tr>
-    <td>Ph. Number / WA<br><input name="hp" type="text" style="width:100%;" placeholder="nomor hp" autocomplete="off" <?php echo "$required";?>></td></tr>
+    <td><br>Nama Pasien<br><input name="nama" type="text" style="width:100%;" placeholder="nama pasien" autocomplete="off"></td></tr>
+    <td>Ph. Number / WA<br><input name="hp" type="text" style="width:100%;" placeholder="nomor hp" autocomplete="off"></td></tr>
     <td>Total Billing<br><input name="total_billing" id="total_billing" type="text" value="<?php echo "$grand_totalrp"; ?>" style="width:100%;" onkeyup="sum();" disabled></td></tr>
     <td>Apoteker<br><select name="id_apoteker" <?php echo "$required";?>>
     <option value=""></option>
@@ -220,10 +202,10 @@ $grand_totalrp    = number_format($grand_total,0,",",".");
 
 
 <div id="id02" class="modal" style="z-index:1000;border-radius:0px;margin-top:0px;">
-    <div class="imgcontainer" style="margin-top:-60px;width:86%;">
+    <div class="imgcontainer" style="margin-top:50px;width:86%;">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal" style="margin-top:45px;">&times;</span>
     </div>
-    <div class="container" style="width:75%;">
+    <div class="container-modal" style="width:75%;">
     <table width="100%" style="padding:10px;height:525px;background:white;border-radius:10px;">
     <td valign="top" style="width:95%;padding:10px;">
     <table id="myTable" style="width:95%;padding:10px;margin-top:70px;">
@@ -295,47 +277,47 @@ while ($record=mysqli_fetch_array($query)){
     <div class="imgcontainer" style="margin-top:50px;width:86%;">
       <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal" style="margin-top:45px;">&times;</span>
     </div>
-    <div class="container" style="width:75%;">
+    <div class="container-modal" style="width:75%;">
     <table width="100%" style="padding:10px;height:425px;background:white;border-radius:10px;">
     <td valign="top" style="width:95%;padding:10px;">
-    <table id="myTable" style="width:95%;padding:10px;margin-top:70px;">
-    <td valign="top" colspan="6" style="width:100%;font-size:16px;">Pilih Produk Jasa</td></tr>
-    <td valign="top" colspan="6" style="width:100%;">&nbsp;</td></tr>
-    <tr class="header" height="35" style="background:#1d3565;color:white;">
-    <th style="width:5%;padding:10px;"><center>No</center></th>
-    <th style="width:30%;padding:10px;">Nama Jasa</th>
-    <th style="width:15%;padding:10px;">Harga Jasa</th>
-    <th style="width:5%;padding:10px;"><center>Action</center></th>
-  </tr>
+    <table id="tableJasa" style="width:95%;padding:10px;margin-top:70px;">
+      <td valign="top" colspan="6" style="width:100%;font-size:16px;">Pilih Produk Jasa</td></tr>
+      <td valign="top" colspan="6" style="width:100%;">&nbsp;</td></tr>
+      <tr class="header" height="35" style="background:#1d3565;color:white;">
+        <th style="width:5%;padding:10px;"><center>No</center></th>
+        <th style="width:30%;padding:10px;">Nama Jasa</th>
+        <th style="width:15%;padding:10px;">Harga Jasa</th>
+        <th style="width:5%;padding:10px;"><center>Action</center></th>
+      </tr>
 
-<?php
-$query2=mysqli_query($koneksi, "SELECT * FROM db_jasa where view like '1' order by nama_jasa asc");
-$no2 = 0;
-while ($record2=mysqli_fetch_array($query2)){
-$no2++;
+      <?php
+      $query2=mysqli_query($koneksi, "SELECT * FROM db_jasa where view like '1' order by nama_jasa asc");
+      $no2 = 0;
+      while ($record2=mysqli_fetch_array($query2)){
+        $no2++;
 
-$harga_jual_itemrp   = number_format($record2["harga"],0,",",".");
+        $harga_jual_itemrp   = number_format($record2["harga"],0,",",".");
 
-echo "
-<form name='form2$no2' method='post' action='action/add-item-jasa' enctype='multipart/form-data'>
-<input type='hidden' name='jenis' value='add-item-jasa'>
-<input type='hidden' name='kode_trx' value='$kode'>
-<input type='hidden' name='no' value='$record2[no]'>
-<input type='hidden' name='kategori_cust' value='$kategori_cust'>
-<input type='hidden' name='id_konsulen' value='$id_konsulen'>
+        echo "
+        <form name='form2$no2' method='post' action='action/add-item-jasa' enctype='multipart/form-data'>
+        <input type='hidden' name='jenis' value='add-item-jasa'>
+        <input type='hidden' name='kode_trx' value='$kode'>
+        <input type='hidden' name='no' value='$record2[no]'>
+        <input type='hidden' name='kategori_cust' value='$kategori_cust'>
+        <input type='hidden' name='id_konsulen' value='$id_konsulen'>
 
-<tr>
-<td style='border:1px solid #d1d1d1;padding:10px;'><center>$no2</center></td>
-<td style='border:1px solid #d1d1d1;padding:10px;'>$record2[nama_jasa]</b></td>
-<td style='border:1px solid #d1d1d1;padding:10px;'>Rp. $harga_jual_itemrp</td>
-<td style='border:1px solid #d1d1d1;padding:0px;'>
-<center><a tooltip='Tambahkan Ke Transaksi' flow='left'><button style='margin-top:0px;width:50px;background:none;'><i class='fa fa-plus-circle' style='color:green;font-size:25px;margin-left:0px;'></i></form></center>
-</td>
-</tr>";
-}
-?>
+        <tr>
+        <td style='border:1px solid #d1d1d1;padding:10px;'><center>$no2</center></td>
+        <td style='border:1px solid #d1d1d1;padding:10px;'>$record2[nama_jasa]</b></td>
+        <td style='border:1px solid #d1d1d1;padding:10px;'>Rp. $harga_jual_itemrp</td>
+        <td style='border:1px solid #d1d1d1;padding:0px;'>
+        <center><a tooltip='Tambahkan Ke Transaksi' flow='left'><button style='margin-top:0px;width:50px;background:none;'><i class='fa fa-plus-circle' style='color:green;font-size:25px;margin-left:0px;'></i></form></center>
+        </td>
+        </tr>";
+        }
+      ?>
 
-</table>
+    </table>
         </td></tr>
         <td height="50">&nbsp;</td>
     </table>
