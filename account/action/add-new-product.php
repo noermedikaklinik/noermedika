@@ -18,9 +18,7 @@ $ukuran            = $_FILES['doc1']['size'];
 $ext1              = pathinfo($doc1, PATHINFO_EXTENSION);
 $ekstensi          =  array('png','jpg','jpeg','gif');
 if(!in_array($ext1,$ekstensi) ) { 
-    echo 'loh masuk sini';
-    echo $ekstensi;
-    //header ("Location:add-new-product?message=Extension gambar ditolak&&alert=alert alert-danger");
+    header ("Location:add-new-product?message=Extension gambar ditolak&&alert=alert alert-danger");
 }
 else
   {
@@ -32,12 +30,11 @@ else
 		$SQL = "INSERT INTO db_produk (id_produk,nama_produk,kategori_produk,satuan_produk,harga_beli,harga_jual,min_stok,foto,id_supplier)
 		VALUES ('$id_produk','$nama_produk','$kategori_produk','$satuan_produk','$harga_beli','$harga_jual','$min_stok','$filename','$id_supplier')";
 		mysqli_query($koneksi, $SQL) or die (mysql_error());
-		
-		header("location:add-new-product?message=Produk baru berhasil ditambahkan&alert=alert alert-success"); exit;
+		header("location:../add-new-product?message=Produk baru berhasil ditambahkan&alert=alert alert-success"); exit;
 	}
 	else
 	{
-	    header ("Location:add-new-product?message=Ukuran gambar terlalu besar&alert=alert alert-warning");
+	    header ("Location:../add-new-product?message=Ukuran gambar terlalu besar&alert=alert alert-warning");
 	}
   }
 ?>
