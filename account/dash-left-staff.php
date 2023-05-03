@@ -18,10 +18,34 @@
             function lap_penjualan_produk(bookURL){window.open(bookURL,"bookDetails","width=650,height=750,top=100px,left=400px,left=400px;");}
             </script>
             <table style="width:100%;padding:10px;margin-top:20px;">
-                <td align="center" style="width:25%;padding:10px;" onclick="return absensi_karyawan('snapshot')"><a tooltip='Absensi Karyawan' flow='right'><i class="fa fa-clock-o" style="color:orange;font-size:27px;"></i></a><br>Absensi</td>
-                <td align="center" style="width:25%;padding:10px;"><a href="penjualan-produk?kategori_cust=UMUM" tooltip='Buat Transaksi Baru Umum' flow='left'><i class="fa fa-shopping-cart" style="color:green;font-size:27px;"></i></a><br>Umum</td>
-                <td align="center" style="width:25%;padding:10px;"><a href="penjualan-produk?kategori_cust=RESEP" tooltip='Buat Transaksi Baru Resep Dokter' flow='left'><i class="fa fa-file-text-o" style="color:green;font-size:27px;"></i></a><br>Resep</td>
-                <td align="center" style="width:25%;padding:10px;" onclick="return lap_penjualan_produk('lap-penjualan-produk')"><a tooltip='Laporan Penjualan' flow='left'><i class="fa fa-print" style="color:purple;font-size:27px;"></i></a><br>Slip Setor</td>
+                <td align="center" style="width:25%;padding:10px;" onclick="return absensi_karyawan('snapshot')">
+                    <a tooltip='Absensi Karyawan' flow='right'>
+                        <i class="fa fa-clock-o" style="color:orange;font-size:27px;"></i>
+                    </a>
+                    <br>Absensi
+                </td>
+                <?php
+                if($akses["jabatan"] == "APOTEKER" || $akses["jabatan"] == "ASISTEN APOTEKER"){
+                    echo "<td align='center' style='width:25%;padding:10px;'>
+                            <a href='penjualan-produk?kategori_cust=UMUM' tooltip='Buat Transaksi Baru Umum' flow='left'>
+                                <i class='fa fa-shopping-cart' style='color:green;font-size:27px;'></i>
+                            </a>
+                            <br>Umum
+                        </td>
+                        <td align='center' style='width:25%;padding:10px;'>
+                            <a href='penjualan-produk?kategori_cust=RESEP' tooltip='Buat Transaksi Baru Resep Dokter' flow='left'>
+                                <i class='fa fa-file-text-o' style='color:green;font-size:27px;'></i>
+                            </a>
+                            <br>Resep
+                        </td>";
+                }
+                
+                ?>
+                
+                <td align="center" style="width:25%;padding:10px;" onclick="return lap_penjualan_produk('lap-penjualan-produk')">
+                    <a tooltip='Laporan Penjualan' flow='left' disabled><i class="fa fa-print" style="color:purple;font-size:27px;"></i></a>
+                    <br>Slip Setor
+                </td>
             </table>
         </td></tr>
     </table>

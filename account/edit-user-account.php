@@ -14,10 +14,7 @@ $staff   = mysqli_fetch_assoc($result1);
     <input type="hidden" name="id_user" value="<?php echo "$id_user";?>">
     <input type="hidden" name="image" value="<?php echo "$staff[foto]";?>">
 
-<div style="height:110px;"></div>
-
-
-<table width="95%" align="center" style="background:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);border-radius:10px;">
+<table class="table-main">
 <td>
 <table width="95%" align="center">
 <td colspan="2" height="40">&nbsp;</td></tr> 
@@ -56,15 +53,18 @@ $staff   = mysqli_fetch_assoc($result1);
 <br><input type="text" name="nama" value="<?php echo "$staff[nama]";?>" autocomplete="off" required></td> 
 
 
-<td colspan="1" style="width:50%;padding:10px;">Posisi
-<br><select name="jabatan" id="kota" required>
-    <option value="<?php echo "$staff[jabatan]";?>"><?php echo "$staff[jabatan]";?></option>
-    <option value=""></option>
-    <option value="APOTEKER">APOTEKER</option>
-    <option value="KASIR">KASIR</option>
-    <option value="KEUANGAN">KEUANGAN</option>
+<td colspan="1" style="width:50%;padding:10px;">
+    Posisi<br>
+    <select name="jabatan" id="kota" required>
+        <option value="<?php echo "$staff[jabatan]";?>"><?php echo "$staff[jabatan]";?></option>
+        <option value="APOTEKER">APOTEKER</option>
+        <option value="ASISTEN APOTEKER">ASISTEN APOTEKER</option>
+        <option value="PENDAFTARAN">PENDAFTARAN</option>
+        <option value="KEUANGAN">KEUANGAN</option>
+        <option value="DOKTER">DOKTER</option>
     </select>
-</td></tr>
+</td>
+</tr>
 
 <td colspan="3" style="padding:10px;">Alamat (*)
 <br><input type="text" name="alamat" value="<?php echo "$staff[alamat]";?>" autocomplete="off"></td></tr>

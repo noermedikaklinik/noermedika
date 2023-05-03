@@ -477,3 +477,8 @@ fieldset {
 .align-center{
   text-align: center;
 }
+a.disabled{
+  pointer-events: none;
+  cursor:default;
+  background-color: #333;
+}

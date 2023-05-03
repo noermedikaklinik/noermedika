@@ -208,8 +208,8 @@ $grand_totalrp    = number_format($grand_total,0,",",".");
     <div class="container-modal" style="width:75%;">
     <table width="100%" style="padding:10px;height:525px;background:white;border-radius:10px;">
     <td valign="top" style="width:95%;padding:10px;">
-    <table id="myTable" style="width:95%;padding:10px;margin-top:70px;">
-    <td valign="top" colspan="6" style="width:100%;"><input type="text" id="myInput" onkeyup="myFunction1()" placeholder="pencarian data barang..." autofocus></td></tr>
+    <table id="table_barang" style="width:95%;padding:10px;margin-top:70px;">
+    <td valign="top" colspan="6" style="width:100%;"><input type="text" id="cari_input" onkeyup="cari_barang()" placeholder="pencarian data barang..." autofocus></td></tr>
     <tr class="header" height="35" style="background:#1d3565;color:white;">
     <th style="width:5%;padding:10px;"><center>No</center></th>
     <th style="width:30%;padding:10px;">Nama Barang / Item(s)</th>
@@ -330,11 +330,11 @@ while ($record=mysqli_fetch_array($query)){
 
 
 <script>
-function myFunction1() {
+function cari_barang() {
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
+  input = document.getElementById("cari_input");
   filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
+  table = document.getElementById("table_barang");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];
