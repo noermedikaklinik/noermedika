@@ -56,7 +56,17 @@ $user_trxrp    = number_format($user_trx,0,",",".");
                     </div>
                   </div> 
              </td> 
-             
+             <?php if ($akses['jabatan'] == "PENDAFTARAN") { ?>
+              <td width="10%" align="center" class="link">
+                    <div class="dropdown">
+                    <span style="font-size:11px"><i class="fa fa-file-text" style="color:#1d3565;font-size:12px;"></i> PENDAFTARAN</span>
+                    <div class="dropdown-content" align="left">
+                      <a href="list-" style="text-decoration:none;color:black;font-size:12px;">PENDAFTARAN</a>
+                      <a href="list-pasien" style="text-decoration:none;color:black;font-size:12px;">DATA PASIEN</a>
+                    </div>
+                  </div> 
+             </td> 
+             <?php } ?>
              <td width="10%" align="center" class="link">
                     <div class="dropdown">
                     <span style="font-size:11px"><i class="fa fa-users" style="color:#1d3565;font-size:12px;"></i> PARTNER</span>

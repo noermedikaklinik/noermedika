@@ -482,3 +482,7 @@ a.disabled{
   cursor:default;
   background-color: #333;
 }
+td.input{
+  width:33%;
+  padding:10px;
+}

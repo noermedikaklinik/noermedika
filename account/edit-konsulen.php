@@ -72,20 +72,3 @@ $staff     = mysqli_fetch_assoc($result1);
 </table>
 
 <div style="height:75px;"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
