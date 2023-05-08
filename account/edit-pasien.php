@@ -1,6 +1,6 @@
 <?php
 include "akses.php";
-if ($akses['jabatan'] <> "PENDAFTARAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses['hak_akses'] <> "PENDAFTARAN" and $akses['hak_akses'] <> "ADMIN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php";
 if(!isset($_GET['no'])) header("Location:list-pasien");
 $no = $_GET['no'];

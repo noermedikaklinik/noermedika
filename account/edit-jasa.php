@@ -1,7 +1,7 @@
 <?php
 include "mainhead.php";
 
-if ($akses[jabatan] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses['jabatan'] <> "ADMIN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 
 $no        = $_GET['no'];
 $result1   = mysqli_query($link, "SELECT * FROM db_jasa where no like '$no'");

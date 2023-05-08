@@ -1,11 +1,4 @@
-<?php 
-$id_user = $akses['id_user'];
-$sqlpengunjung    = "select sum(sub_total_jual) kunjung from db_penjualan where id_user = '$id_user' and status like '1' and status_setor like '0' and jenis_pembayaran like 'CASH'";
-$resultpengunjung = mysqli_query($koneksi,$sqlpengunjung);
-$pengunjung3      = mysqli_fetch_object($resultpengunjung);
-$user_trx      = $pengunjung3->kunjung;
-$user_trxrp    = number_format($user_trx,0,",",".");
-?>
+
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +37,7 @@ $user_trxrp    = number_format($user_trx,0,",",".");
 
     <td align="right" style="width:60%;">
          <table style="padding:20px;background:white;width:95%;height:40px;border:3px solid;">
-             
+           <?php if ($akses['hak_akses'] == "ADMIN") { ?>
              <td width="10%" align="center" class="link">
                     <div class="dropdown">
                     <span style="font-size:11px"><i class="fa fa-file-text" style="color:#1d3565;font-size:12px;"></i> PERSEDIAAN</span>
@@ -56,17 +49,6 @@ $user_trxrp    = number_format($user_trx,0,",",".");
                     </div>
                   </div> 
              </td> 
-             <?php if ($akses['jabatan'] == "PENDAFTARAN") { ?>
-              <td width="10%" align="center" class="link">
-                    <div class="dropdown">
-                    <span style="font-size:11px"><i class="fa fa-file-text" style="color:#1d3565;font-size:12px;"></i> PENDAFTARAN</span>
-                    <div class="dropdown-content" align="left">
-                      <a href="list-" style="text-decoration:none;color:black;font-size:12px;">PENDAFTARAN</a>
-                      <a href="list-pasien" style="text-decoration:none;color:black;font-size:12px;">DATA PASIEN</a>
-                    </div>
-                  </div> 
-             </td> 
-             <?php } ?>
              <td width="10%" align="center" class="link">
                     <div class="dropdown">
                     <span style="font-size:11px"><i class="fa fa-users" style="color:#1d3565;font-size:12px;"></i> PARTNER</span>
@@ -76,23 +58,49 @@ $user_trxrp    = number_format($user_trx,0,",",".");
                     </div>
                   </div> 
              </td> 
-
-             <td width="10%" align="center" class="link">
-                   <div class="dropdown">
-                    <span style="font-size:11px"><i class="fa fa-file" style="color:#1d3565;font-size:12px;"></i> TRANSAKSI</span>
-                     <div class="dropdown-content" align="left">
-                      <a href="list-nota" style="text-decoration:none;color:black;font-size:12px;">DATA NOTA</a>
-                      <a href="lap-penjualan-global" style="text-decoration:none;color:black;font-size:12px;">PENJUALAN GLOBAL</a>
-                      <a href="keuangan" style="text-decoration:none;color:black;font-size:12px;">KEUANGAN</a>
-                     </div>
+             <?php } ?>
+             <?php if ($akses['hak_akses'] == "PENDAFTARAN") { ?>
+              <td width="10%" align="center" class="link">
+                    <div class="dropdown">
+                    <span style="font-size:11px"><i class="fa fa-file-text" style="color:#1d3565;font-size:12px;"></i> PENDAFTARAN</span>
+                    <div class="dropdown-content" align="left">
+                      <a href="pendaftaran" style="text-decoration:none;color:black;font-size:12px;">PENDAFTARAN</a>
+                      <a href="list-pasien" style="text-decoration:none;color:black;font-size:12px;">DATA PASIEN</a>
                     </div>
-             </td>
+                  </div> 
+             </td> 
+             <?php } ?>
              
+             <?php if ($akses['hak_akses'] == "APOTEK") { ?>
+              <td width="10%" align="center" class="link">
+                    <div class="dropdown">
+                      <span style="font-size:11px"><i class="fa fa-file" style="color:#1d3565;font-size:12px;"></i> TRANSAKSI</span>
+                      <div class="dropdown-content" align="left">
+                        <a href="list-nota" style="text-decoration:none;color:black;font-size:12px;">TRANSAKSI</a>
+                      </div>
+                      </div>
+              </td>
+             <?php } ?>
+             
+             <?php if ($akses['hak_akses'] == "KEUANGAN") { ?>
+              <td width="10%" align="center" class="link">
+                    <div class="dropdown">
+                      <span style="font-size:11px"><i class="fa fa-file" style="color:#1d3565;font-size:12px;"></i> TRANSAKSI</span>
+                      <div class="dropdown-content" align="left">
+                        <a href="list-nota" style="text-decoration:none;color:black;font-size:12px;">DATA NOTA</a>
+                        <a href="lap-penjualan-global" style="text-decoration:none;color:black;font-size:12px;">PENJUALAN GLOBAL</a>
+                        <a href="keuangan" style="text-decoration:none;color:black;font-size:12px;">KEUANGAN</a>
+                      </div>
+                      </div>
+              </td>
+             <?php } ?>
              <td width="10%" align="center" class="link">
                    <div class="dropdown">
                     <span style="font-size:11px"><i class="fa fa-user" style="color:#1d3565;font-size:12px;"></i> AKUN LIST</span>
                      <div class="dropdown-content" align="left">
-                      <a href="account-list" style="text-decoration:none;color:black;font-size:12px;">DATA KARYAWAN</a>
+                      <?php if ($akses['hak_akses'] == "ADMIN") { ?>
+                        <a href="list-account" style="text-decoration:none;color:black;font-size:12px;">DATA KARYAWAN</a>
+                      <?php } ?>
                       <a href="my-account" style="text-decoration:none;color:black;font-size:12px;">AKUN SAYA</a>
                      </div>
                     </div>

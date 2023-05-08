@@ -12,6 +12,7 @@
     $expired_date  = strtoupper(isset($_POST['expired_date'])?$_POST['expired_date']:"");
     $cash_terima   = preg_replace("/[^0-9]/", "", $_POST['cash_terima']);
     $grand_total   = $_POST['grand_total'];
+    $id_user       = $akses['no'];
     
     if ($tipe == "")     {header ("Location:../penjualan-produk?kode_trx=$kode_trx&kategori_cust=$kategori_cust&message=Anda belum memilih jenis pembayaran&alert=alert alert-danger");exit;}
     if ($tipe == "DEBIT" and $grand_total <= "99999")     {header ("Location:../penjualan-produk?kode_trx=$kode_trx&kategori_cust=$kategori_cust&message=Pembayaran Dengan DEBIT atau KARTU KREDIT Minimum transaksi Rp. 100.000&alert=alert alert-danger");exit;}
@@ -31,9 +32,12 @@
     $hari      = date("d"); $bln = date("m"); $thn = date("Y");
     $urut      = $trx['urut'] + 1;
     $nota      = "$hari$bln$thn$urut";
-    
-    $SQL = "UPDATE db_penjualan SET nota='$nota', urut='$urut', jenis_pembayaran='$tipe', grand_total='$grand_total', cash_terima='$cash_terima2', cash_return='$cash_return', nama='$nama2', hp='$hp2', kategori_plg='$kategori_cust', status='1', id_apoteker='$id_apoteker',
-    no_kartu='$no_kartu', bank_penerbit='$bank', nama_pemegang='$nama_pemegang', expired_date='$expired_date' where kode_trx='$kode_trx' and id_user='$akses[id_user]' and status='0'";
-    mysqli_query($koneksi, $SQL) or die (include "error-message.php");
+    $ppn = $grand_total * 11 / 100;
+    $sql_insert_pembayaran = "INSERT INTO db_pembayaran 
+    (nota, urut, grand_total, cash_terima, cash_return, nama, hp, status, id_user, ppn)
+    ('$nota', '$urut', '$grand_total', '$cash_terima2', '$cash_return', '$nama', '$hp2',1,'$id_user',$ppn)";
+    mysqli_query($koneksi, $sql_insert_pembayaran) or die (include "error-message.php");
+    $pembayaran_id = mysqli_insert_id($koneksi);
+    $sql_update_
     header ("Location:../print-nota?nota=$nota");
 ?>

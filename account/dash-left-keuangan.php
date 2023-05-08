@@ -1,14 +1,13 @@
 <td valign="top" style="width:30%;">
     <table align="center" style="height:530px;width:100%;background:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);border-radius:10px;">
       <td><table style="width:90%;">
-        <td colspan="2" align="center"><img src="staff-image/<?php echo "$akses[foto]"; ?>" style="width:30%;height:auto;margin-top:-35px;border-radius:100%;"></td></tr>
         <td colspan="2" align="center"><hr style="border:0px;height:1px;background:grey;"></td></tr>
         <td style="width:25%;">ID Karyawan</td>
-        <td style="width:75%;">: <?php echo "$akses[id_user]"; ?></td></tr>
+        <td style="width:75%;">: <?php echo "$akses[no]"; ?></td></tr>
         <td style="width:25%;">Nama</td>
         <td style="width:75%;">: <?php echo "$akses[nama]"; ?></td></tr>
         <td style="width:25%;">Posisi</td>
-        <td style="width:75%;">: <?php echo "$akses[jabatan]"; ?></td></tr>
+        <td style="width:75%;">: <?php echo "$akses[hak_akses]"; ?></td></tr>
         <td style="width:25%;">Tanggal</td>
         <td style="width:75%;">: <?php echo "$tglnow"; ?></td></tr>
         <td colspan="2" align="center"><hr style="border:0px;height:1px;background:grey;"></td></tr>

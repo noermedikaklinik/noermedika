@@ -8,7 +8,7 @@
         <td style="width:25%;">Nama</td>
         <td style="width:75%;">: <?php echo "$akses[nama]"; ?></td></tr>
         <td style="width:25%;">Posisi</td>
-        <td style="width:75%;">: <?php echo "$akses[jabatan]"; ?></td></tr>
+        <td style="width:75%;">: <?php echo "$akses[hak_akses]"; ?></td></tr>
         <td style="width:25%;">Total Trx</td>
         <td style="width:75%;">: Rp. <?php echo "$user_trxrp"; ?></td></tr>
         <td colspan="2" align="center"><hr style="border:0px;height:1px;background:#d1d1d1;"></td></tr>
@@ -25,7 +25,7 @@
                     <br>Absensi
                 </td>
                 <?php
-                if($akses["jabatan"] == "APOTEKER" || $akses["jabatan"] == "ASISTEN APOTEKER"){
+                if($akses["hak_akses"] == "APOTEKER"){
                     echo "<td align='center' style='width:25%;padding:10px;'>
                             <a href='penjualan-produk?kategori_cust=UMUM' tooltip='Buat Transaksi Baru Umum' flow='left'>
                                 <i class='fa fa-shopping-cart' style='color:green;font-size:27px;'></i>

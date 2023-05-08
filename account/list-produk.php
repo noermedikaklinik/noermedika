@@ -1,6 +1,6 @@
 <?php
 include "akses.php";
-if ($akses['jabatan'] <> "KEUANGAN"){header("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses['hak_akses'] <> "KEUANGAN" and $akses['hak_akses'] <> "ADMIN"){header("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php";
 ?>
 
@@ -8,10 +8,7 @@ include "mainhead.php";
   
 </style>
 
-<div style="height:110px;"></div>
-
-
-<table width="95%" align="center" style="background:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);border-radius:10px;">
+<table class="table-main">
 <td style="padding:20px;">
 <table style="width:95%;padding:20px;margin-top:30px;">
     <td colspan="2"><font size="4" color="#5b8ff5"><b>Data Persediaan Barang</b></font></td></tr>
