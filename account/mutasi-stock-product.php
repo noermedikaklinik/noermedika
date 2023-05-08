@@ -1,6 +1,6 @@
 <?php
 include "akses.php";
-if ($akses['jabatan'] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses['hak_akses'] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php";
 
 if(isset($_GET['id_produk'])){

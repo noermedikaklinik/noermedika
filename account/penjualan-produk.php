@@ -1,6 +1,6 @@
 <?php
 include "akses.php";
-if ($akses["jabatan"] <> "KASIR" and $akses["jabatan"] <> "APOTEKER" and $akses["jabatan"] <> "ASISTEN APOTEKER" ){header ("Location:./");}
+if ($akses["hak_akses"] <> "KASIR" and $akses["hak_akses"] <> "APOTEKER" and $akses["hak_akses"] <> "ASISTEN APOTEKER" ){header ("Location:./");}
 
 $kategori_cust = isset($_GET['kategori_cust'])?$_GET['kategori_cust']:"";
 $id_konsulen   = isset($_GET['id_konsulen'])?$_GET['id_konsulen']:"";
@@ -154,7 +154,7 @@ $grand_totalrp    = number_format($grand_total,0,",",".");
     <td>Apoteker<br><select name="id_apoteker" <?php echo "$required";?>>
     <option value=""></option>
     <?php 
-    $qry=mysqli_query($koneksi, "SELECT * From db_user where jabatan like 'APOTEKER' or jabatan like 'ASISTEN APOTEKER'");
+    $qry=mysqli_query($koneksi, "SELECT * From db_user where hak_akses like 'APOTEKER' or hak_akses like 'ASISTEN APOTEKER'");
     while ($t=mysqli_fetch_array($qry)) {
     if ($kategori_cust == "RESEP")
     {

@@ -1,6 +1,6 @@
 <?php
 require_once "akses.php";
-if ($akses["jabatan"] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses["hak_akses"] <> "ADMIN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php";
 
 $id_user   = $_GET['id_user'];

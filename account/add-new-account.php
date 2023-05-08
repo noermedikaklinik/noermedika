@@ -1,6 +1,6 @@
 <?php
 require "akses.php";
-if ($akses["jabatan"] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses["hak_akses"] <> "ADMIN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php";
 
 $code =  mt_rand(100, 999);
@@ -20,11 +20,6 @@ $code =  mt_rand(100, 999);
 
 <div style="height:25px;"></div>
 
-<table width="95%" align="center">
-<td style="padding:10px;"><font size="2"><b>Foto</b></font>
-<br><input type="file" name="doc1" required></td></tr>
-</tr>
-</table>
 
 
 <table width="95%" align="center">
@@ -46,33 +41,29 @@ $code =  mt_rand(100, 999);
     <tr>
         <td style="width:33%;padding:10px;">Nama
         <br><input type="text" name="nama" autocomplete="off" required></td> 
-        <td style="width:33%;padding:10px;">Alamat
-        <br><input type="text" name="alamat" autocomplete="off" required></td> 
+        
         <td style="width:33%;padding:10px;">Email
         <br><input type="email" name="email" autocomplete="off" required></td>
     </tr>
     <tr>
-        <td style="width:33%;padding:10px;">Posisi
+        <td style="width:33%;padding:10px;" colspan="2">Alamat
+        <br><input type="text" name="alamat" autocomplete="off" required></td> 
+    </tr>
+    <tr>
+        <td style="width:33%;padding:10px;">Akses
             <br>
-            <select name="jabatan" autocomplete="off" required>
+            <select name="hak_akses" autocomplete="off" required>
                 <option value="APOTEKER">APOTEKER</option>
-                <option value="ASISTEN APOTEKER">ASISTEN APOTEKER</option>
                 <option value="PENDAFTARAN">PENDAFTARAN</option>
                 <option value="KEUANGAN">KEUANGAN</option>
                 <option value="DOKTER">DOKTER</option>
+                <option value="ADMIN">ADMIN</option>
             </select>
         </td> 
         <td style="width:33%;padding:10px;">
             No Handphone<br>
             <input type="number" name="hp" autocomplete="off" required>
         </td> 
-        <td style="width:33%;padding:10px;">
-            Jenis Kelamin<br>
-            <select name="jenis_kelamin" autocomplete="off" required>
-                <option value="LAKI LAKI">LAKI LAKI</option>
-                <option value="PEREMPUAN">PEREMPUAN</option>
-            </select>
-        </td>
     </tr>
 </table>
 
