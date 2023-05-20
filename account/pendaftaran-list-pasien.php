@@ -10,15 +10,12 @@ include "mainhead.php";
     <td colspan="2" ><font size="4" color="#5b8ff5"><b>Pendaftaran</b></font></td></tr>
     <td colspan="2" height="40">&nbsp;</td></tr>
     <td align="left" width="95%">
-        <input type="date" id="date_filter"value="<?php echo date("Y-m-d");?>">
-    </td>
-    <td>
-      <a href="pendaftaran-list-pasien" class="btn btn-primary">Daftar</a>
+        <input type="date" id="date_filter" value="<?php echo date("Y-m-d");?>">
     </td>
 </table>
 
 <table class="table-data" id ="table-data">
-  <?php require "paging-list-pendaftaran.php";?>
+  <?php require "paging-list-pendaftaran-pasien.php";?>
 </table>
 
 <div style="height:35px;"></div>

@@ -40,8 +40,8 @@
             </td>
             <td style='border:1px solid #d1d1d1;padding:10px;'>
                 <center>
-                    <a tooltip='Update Informasi Barang' flow='left' href='edit-pasien?no=$record[no]'>
-                        <i class='fa fa-pencil' style='color:orange;font-size:18px;'></i>
+                    <a tooltip='Daftar' flow='left' href='pendaftaran-tindakan?no_rekam_medis=$record[no_rekam_medis]'>
+                        <i class='fa fa-plus' style='color:green;font-size:18px;'></i>
                     </a>
                 </center>
             </td>
