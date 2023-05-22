@@ -1,9 +1,9 @@
 <?php
     require_once "../akses.php";
-    $no_rekam_medis = $_POST['no_rekam_medis'];
-    $tanggal = $_POST['tanggal'];
-    $umum = $_POST['umum'];
-    $gigi = $_POST['gigi'];
+    $no_rekam_medis = $koneksi->real_escape_string($_POST['no_rekam_medis']);
+    $tanggal = $koneksi->real_escape_string($_POST['tanggal']);
+    $umum = $koneksi->real_escape_string($_POST['umum']);
+    $gigi = $koneksi->real_escape_string($_POST['gigi']);
     echo $tanggal;
     $laboratorium = $_POST['laboratorium'];
     

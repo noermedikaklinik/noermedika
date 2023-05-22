@@ -27,7 +27,7 @@
         mysqli_next_result($koneksi);
         $data = $record;
         $no = $data['no'];
-        $query = mysqli_query($koneksi, 'CALL `PENDAFTARAN_BY_NO_PENDAFTARAN`('.$no.')') or die(mysqli_error($koneksi));
+        $query = mysqli_query($koneksi, 'CALL `PENDAFTARAN_BY_no_pendaftaran`('.$no.')') or die(mysqli_error($koneksi));
         $data_pendaftaran = mysqli_fetch_array($query);
         $umum = $data_pendaftaran!= null?$data_pendaftaran['umum']:null;
         $gigi = $data_pendaftaran!= null?$data_pendaftaran['gigi']:null;
@@ -53,7 +53,7 @@
                 //jika belum mendaftar
                 echo "
                 <td class='text-center'>
-                    <a href='pendaftaran-tindakan-edit.php?no_pendaftaran=$no' class='btn btn-warning'>
+                    <a href='pendaftaran-tindakan-edit.php?id_pendaftaran=$no' class='btn btn-warning'>
                         Daftar
                     </a>
                 </td>";
@@ -61,7 +61,7 @@
                 //jika belum mendaftar
                 echo "
                 <td class='text-center'>
-                    <a href='melakukan-tindakan.php?no_pendaftaran=$no&poli=umum' class='btn btn-success'>
+                    <a href='action/tindakan.php?id_pendaftaran=$no&poli=umum' class='btn btn-success'>
                         Lakukan Tindakan
                     </a>
                 </td>";
@@ -70,7 +70,7 @@
                 //jika belum mendaftar
                 echo "
                 <td class='text-center'>
-                    <button href='melakukan-tindakan.php?no_pendaftaran=$no&poli=umum' class='btn btn-secondary' disabled>
+                    <button href='melakukan-tindakan.php?id_pendaftaran=$no&poli=umum' class='btn btn-secondary' disabled>
                         Tindakan selesai
                     </button>
                 </td>";
@@ -80,7 +80,7 @@
                 //jika belum mendaftar
                 echo "
                 <td class='text-center'>
-                    <a href='pendaftaran-tindakan-edit.php?no_pendaftaran=$no' class='btn btn-warning'>
+                    <a href='pendaftaran-tindakan-edit.php?id_pendaftaran=$no' class='btn btn-warning'>
                         Daftar
                     </a>
                 </td>";
@@ -88,7 +88,7 @@
                 //jika belum mendaftar
                 echo "
                 <td class='text-center'>
-                    <a href='melakukan-tindakan.php?no_pendaftaran=$no&poli=gigi' class='btn btn-success'>
+                    <a href='action/tindakan.php?id_pendaftaran=$no&poli=gigi' class='btn btn-success'>
                     Lakukan Tindakan
                     </a>
                 </td>";
@@ -97,7 +97,7 @@
                 //jika belum mendaftar
                 echo "
                 <td class='text-center'>
-                    <button href='melakukan-tindakan.php?no_pendaftaran=$no&poli=gigi' class='btn btn-secondary' disabled>
+                    <button href='melakukan-tindakan.php?id_pendaftaran=$no&poli=gigi' class='btn btn-secondary' disabled>
                         Tindakan selesai 
                     </button>
                 </td>";
@@ -108,7 +108,7 @@
                 //jika belum mendaftar
                 echo "
                 <td class='text-center'>
-                    <a href='pendaftaran-tindakan-edit.php?no_pendaftaran=$no' class='btn btn-warning'>
+                    <a href='pendaftaran-tindakan-edit.php?id_pendaftaran=$no' class='btn btn-warning'>
                         Daftar
                     </a>
                 </td>";
@@ -116,7 +116,7 @@
                 //jika belum mendaftar
                 echo "
                 <td class='text-center'>
-                    <a href='melakukan-tindakan.php?no_pendaftaran=$no&poli=laboratorium' class='btn btn-success'>
+                    <a href='action/tindakan.php?id_pendaftaran=$no&poli=laboratorium' class='btn btn-success'>
                     L   akukan Tindakan
                     </a>
                 </td>";
@@ -125,7 +125,7 @@
                 //jika belum mendaftar
                 echo "
                 <td class='text-center'>
-                    <button href='melakukan-tindakan.php?no_pendaftaran=$no&poli=laboratorium' class='btn btn-secondary' disabled>
+                    <button href='melakukan-tindakan.php?id_pendaftaran=$no&poli=laboratorium' class='btn btn-secondary' disabled>
                         Tindakan selesai
                     </button>
                 </td>";

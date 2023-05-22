@@ -23,7 +23,8 @@ if(!isset($_GET['no_pendaftaran'])){
 }
 include "mainhead.php";
 ?>
-<form method = "post" action="./action/daftar.php">
+<form method = "post" action="./action/daftar-edit.php">
+<input type="hidden" name="id_pendaftaran" value=<?php echo "'$no'"?>>
 <table class="table-main">
 <td style="padding:20px;">
 <table style="width:95%;padding:20px;margin-top:30px;">
@@ -94,7 +95,6 @@ include "mainhead.php";
     </tr>
 </table>
   </form>
-<div style="height:35px;"></div>
     
 </td>
 </table>
