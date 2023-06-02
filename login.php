@@ -3,10 +3,10 @@ include "configuration/koneksi.php";
 
 session_start();
 
-$user  = $_POST['username'];
-$pass  = $_POST['password'];
+$user  = $koneksi->real_escape_string($_POST['username']);
+$pass  = $koneksi->real_escape_string($_POST['password']);
 
-$sql = mysqli_query($koneksi, "SELECT * FROM db_user WHERE username='$user' AND password='$pass' and activation_status='1'") or die (include "error-message.php");
+$sql = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$user' AND password='$pass' and activation_status='1'") or die (include "error-message.php");
 
 if(mysqli_num_rows($sql) == 0)
 {

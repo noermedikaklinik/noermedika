@@ -1,6 +1,6 @@
 <?php 
 require "akses.php";
-if ($akses["jabatan"] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses["hak_akses"] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php"; 
 
 $sql     = mysqli_query($koneksi, "SELECT max(id) as maximal FROM list_akun") or die (mysqli_error());

@@ -1,12 +1,8 @@
 <?php
 include "akses.php";
-if ($akses['hak_akses'] <> "KEUANGAN" and $akses['hak_akses'] <> "ADMIN"){header("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses['hak_akses'] <> "PENDAFTARAN"){header("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php";
 ?>
-
-<style>
-  
-</style>
 
 <table class="table-main">
 <td style="padding:20px;">
@@ -19,7 +15,7 @@ include "mainhead.php";
 
 <table id="dataTable" style="width:95%;padding:20px;margin-top:20px;">
 
-<?php require "./action/paging-list-produk.php";?>
+<?php require "./paging-list-pasien.php";?>
 </table>
 
   <div id="paging-button" class="d-flex flex-row">
@@ -63,7 +59,7 @@ $(document).ready(function(){
   });
   function pagination(filter, get_halaman){
     $.ajax({
-        url: "./action/paging-list-produk.php",
+        url: "./paging-list-pasien.php",
         data: "filter="+filter+"&halaman="+get_halaman,
         cache: false,
         success: function(msg){

@@ -1,6 +1,6 @@
 <?php
 include "akses.php";
-if ($akses["jabatan"] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses["hak_akses"] <> "ADMIN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 if(isset($_GET['id_user'])){
     $id_konsulen   = $_GET['id_user'];
 }else{
@@ -72,20 +72,3 @@ $staff     = mysqli_fetch_assoc($result1);
 </table>
 
 <div style="height:75px;"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

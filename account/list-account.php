@@ -1,6 +1,6 @@
 <?php
 require "akses.php";
-if ($akses['jabatan'] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses['hak_akses'] <> "ADMIN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php";
 
 ?>
@@ -17,7 +17,6 @@ include "mainhead.php";
 <table id="myTable" style="width:95%;padding:20px;margin-top:20px;">
   <tr class="header" height="50" style="background:#1d3565;color:white;">
     <th style="width:5%;padding:10px;"><center>No</center></th>
-    <th style="width:10%;padding:10px;"><center>Foto</center></th>
     <th style="width:25%;padding:10px;">Detail Karyawan</th>
     <th style="width:25%;padding:10px;">Informasi kontak</th>
     <th style="width:20%;padding:10px;">Informasi Login</th>
@@ -25,7 +24,7 @@ include "mainhead.php";
   </tr>
 
 <?php
-$query=mysqli_query($koneksi,"SELECT * FROM db_user");
+$query=mysqli_query($koneksi,"SELECT * FROM tb_user");
 $no = 1;
 while ($record=mysqli_fetch_array($query)){
   if ($record['activation_status'] == "0"){$status = "<a href='action/blok-user?id_user=$record[id_user]&jenis2=blok-user&status=1' tooltip='Buka Blokir Akun Karyawan' flow='left' ><i class='fa fa-lock' style='color:red;font-size:20px;' onclick='return cek_block$no();'></i></a>";}
@@ -44,8 +43,7 @@ while ($record=mysqli_fetch_array($query)){
 
   <tr>
   <td style='border:1px solid #d1d1d1;padding:10px;'><center>$no</center></td>
-  <td style='border:1px solid #d1d1d1;padding:10px;'><center><img src='staff-image/$record[foto]' style='width:50%;height:auto;border-radius:10px;'></center></td>
-  <td style='border:1px solid #d1d1d1;padding:10px;'><b>$record[nama]</b><br>$record[alamat]<br><i>$record[jabatan]</i></td>
+  <td style='border:1px solid #d1d1d1;padding:10px;'><b>$record[nama]</b><br>$record[alamat]<br><i>$record[hak_akses]</i></td>
   <td style='border:1px solid #d1d1d1;padding:10px;'><b>$record[email]</b><br>$record[hp]</td>
   <td style='border:1px solid #d1d1d1;padding:10px;'><b>Username :</b> $record[username]<br><b>Password :</b> $record[password]</td>
   <td style='border:1px solid #d1d1d1;padding:10px;'>

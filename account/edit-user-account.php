@@ -1,10 +1,10 @@
 <?php
 require "akses.php";
-if ($akses["jabatan"] <> "KEUANGAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses["hak_akses"] <> "ADMIN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php";
 
 $id_user = $_GET['id_user'];
-$result1   = mysqli_query($koneksi, "SELECT * FROM db_user where id_user like '$id_user'");
+$result1   = mysqli_query($koneksi, "SELECT * FROM tb_user where id_user like '$id_user'");
 $staff   = mysqli_fetch_assoc($result1);
 ?>
 
@@ -12,7 +12,6 @@ $staff   = mysqli_fetch_assoc($result1);
 <form name="login" method="post" action="action/edit-account" enctype="multipart/form-data">
     <input type="hidden" name="jenis" value="edit-user-account">
     <input type="hidden" name="id_user" value="<?php echo "$id_user";?>">
-    <input type="hidden" name="image" value="<?php echo "$staff[foto]";?>">
 
 <table class="table-main">
 <td>
@@ -23,11 +22,6 @@ $staff   = mysqli_fetch_assoc($result1);
 
 <div style="height:25px;"></div>
 
-<table width="95%" align="center">
-<td style="padding:10px;"><font size="2"><b>Foto</b></font></td></tr>
-<td style="padding:10px;"><img src="staff-image/<?php echo "$staff[foto]";?>" style="width:10%;height:auto;border-radius:5px;margin-top:20px;"></td></tr>
-<td style="padding:10px;"><input type="file" name="doc1"></td></tr>
-</table>
 
 <div style="height:25px;"></div>
 
@@ -49,19 +43,19 @@ $staff   = mysqli_fetch_assoc($result1);
 </table>
 
 <table width="95%" align="center">
-<td colspan="2" style="width:50%;padding:10px;">Nama
+<td colspan="1" style="width:50%;padding:10px;">Nama
 <br><input type="text" name="nama" value="<?php echo "$staff[nama]";?>" autocomplete="off" required></td> 
 
 
 <td colspan="1" style="width:50%;padding:10px;">
-    Posisi<br>
-    <select name="jabatan" id="kota" required>
-        <option value="<?php echo "$staff[jabatan]";?>"><?php echo "$staff[jabatan]";?></option>
+    Akses<br>
+    <select name="hak_akses" id="hak_akses" required>
+        <option value="<?php echo "$staff[hak_akses]";?>"><?php echo "$staff[hak_akses]";?></option>
         <option value="APOTEKER">APOTEKER</option>
-        <option value="ASISTEN APOTEKER">ASISTEN APOTEKER</option>
         <option value="PENDAFTARAN">PENDAFTARAN</option>
         <option value="KEUANGAN">KEUANGAN</option>
         <option value="DOKTER">DOKTER</option>
+        <option value="ADMIN">ADMIN</option>
     </select>
 </td>
 </tr>
@@ -74,13 +68,7 @@ $staff   = mysqli_fetch_assoc($result1);
 <br><input type="email" name="email" value="<?php echo "$staff[email]";?>" autocomplete="off" required></td> 
 <td style="width:33%;padding:10px;">No Handphone
 <br><input type="number" name="hp" value="<?php echo "$staff[hp]";?>" autocomplete="off" required></td> 
-<td style="width:33%;padding:10px;">Jenis Kelamin
-<br><select name="jenis_kelamin" autocomplete="off" required>
-    <option value="<?php echo "$staff[jenis_kelamin]";?>"><?php echo "$staff[jenis_kelamin]";?></option>
-    <option value="LAKI LAKI">LAKI LAKI</option>
-    <option value="PEREMPUAN">PEREMPUAN</option>
-    </select>
-</td></tr>
+</tr>
 </table>
 
 <div style="height:25px;"></div>

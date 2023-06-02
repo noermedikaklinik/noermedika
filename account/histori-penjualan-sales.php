@@ -1,7 +1,7 @@
 <?php
 include "mainhead.php";
 
-if ($akses[jabatan] <> "ADMIN"){header ("Location:index?message=You Have No Access, Please Contact Your Administrator");}
+if ($akses['hak_akses'] <> "ADMIN"){header ("Location:index?message=You Have No Access, Please Contact Your Administrator");}
 
 $id_user   = $_GET['id_user'];
 $result1   = mysqli_query($link, "SELECT * FROM db_sales where id_user like '$id_user'");

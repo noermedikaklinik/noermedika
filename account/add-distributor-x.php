@@ -1,7 +1,7 @@
 <?php
 include "mainhead.php";
 
-if ($akses["jabatan"] <> "ADMIN"){header ("Location:index?message=You Have No Access, Please Contact Your Administrator");}
+if ($akses["hak_akses"] <> "ADMIN"){header ("Location:index?message=You Have No Access, Please Contact Your Administrator");}
 
 $code1 =  mt_rand(100000, 999999);
 $code2 =  mt_rand(100, 999);
@@ -137,7 +137,7 @@ if ($message <> "")
 
 
 <td style="width:33%;padding:10px;">Posisi
-<br><select name="jabatan" autocomplete="off" required>
+<br><select name="hak_akses" autocomplete="off" required>
     <option value="">choose position</option>
     <option value="DISTRIBUTOR">DISTRIBUTOR</option>
     </select></td> 
