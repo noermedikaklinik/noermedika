@@ -8,6 +8,7 @@ if ($akses['hak_akses'] == "KASIR" or $akses["hak_akses"] == "APOTEKER" or $akse
 if ($akses['hak_akses'] == "KEUANGAN"){header ("Location:keuangan");}
 if ($akses['hak_akses'] == "PENDAFTARAN"){header("Location:pendaftaran"); }
 if ($akses['hak_akses'] == "ADMIN"){header ("Location:keuangan");}
+if ($akses['hak_akses'] == "DOKTER"){header ("Location:dokter");}
 ?>
 
 

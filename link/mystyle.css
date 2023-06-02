@@ -491,3 +491,10 @@ td.input{
 .table-data td{
   border:1px solid #d1d1d1;padding:10px;
 }
+.table-data tr:first-child{
+  background:#1d3565;
+  color:white;
+}
+.table-data tr:first-child th{
+  width:5%;padding:10px;
+}
