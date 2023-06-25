@@ -52,38 +52,6 @@
   to {bottom: 0; opacity: 0;}
 } 
 
-@media screen and (min-width: 279px) 
-{
-*{margin:0px auto; /*supaya layer otomatis mengisi dan ke tengah*/}
-#wrapper1{width:100%;position:relative;}
-#header1{width:100%;position:fixed;height:80px;z-index:1000;}
-#header1 a.title{color:#f0f0f0; font-weight:bold; text-decoration:none; font-size:30px; line-height:60px;padding:0px 20px;}
-}
-
-@media screen and (min-width: 479px) 
-{
-*{margin:0px auto; /*supaya layer otomatis mengisi dan ke tengah*/}
-#wrapper1{width:100%;position:relative;}
-#header1{width:100%;position:fixed;height:120px;z-index:1000;}
-#header1 a.title{color:#f0f0f0; font-weight:bold; text-decoration:none; font-size:30px; line-height:60px;padding:0px 20px;}
-}
-
-@media screen and (min-width: 679px) 
-{
-*{margin:0px auto; /*supaya layer otomatis mengisi dan ke tengah*/}
-#wrapper1{width:100%;position:relative;}
-#header1{width:100%;position:fixed;height:80px;z-index:1000;}
-#header1 a.title{color:#f0f0f0; font-weight:bold; text-decoration:none; font-size:30px; line-height:60px;padding:0px 20px;}
-}
-
-@media screen and (min-width: 1280px) 
-{
-*{margin:0px auto; /*supaya layer otomatis mengisi dan ke tengah*/}
-#wrapper1{width:100%;position:relative;}
-#header1{width:100%;position:fixed;height:80px;z-index:1000;}
-#header1 a.title{color:#f0f0f0; font-weight:bold; text-decoration:none; font-size:30px; line-height:60px;padding:0px 20px;}
-}
-
 body{font-family:verdana, sans-serif;font-size:12px; color:#95a5a6}
 .link {background:#ffffff;height:50px;color:#34495e; -webkit-transition: 0.7s; transition: 0.7s;}
 .link:hover {background:#e5c309;height:40px;color:#95a5a6;}
@@ -338,18 +306,19 @@ input[type=reset]{
 button{
     font-size: 14px;
     font-family:arial;
-    background: #8fa93a;
-    color: white;
-    border: white 0px solid;
+    background: white;
+    color: #74b9ff !important;
+    border: #74b9ff 2px solid !important;
     border-radius: 10px;
-    padding: 12px 20px;
+    padding: 10px 20px;
     cursor:pointer;
     width:200px;   
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
 button:hover{
-    background: #75960b;
+    background: #74b9ff;
+    color: white !important;
 }
 
 /* Center the image and position the close button */
@@ -421,7 +390,8 @@ fieldset {
 }
 
 .table-main{
-  width: 80%;
+  margin-top: 80px;
+  width: 100%;
   margin-bottom: 100px;
   padding: 100px 100px;
   border-radius: 10px;
@@ -497,4 +467,13 @@ td.input{
 }
 .table-data tr:first-child th{
   width:5%;padding:10px;
+}
+.icon{
+  color:grey;font-size:27px;
+}
+.padding-10{
+  padding:10px;
+}
+.custom-space{
+  height: 80px;
 }

@@ -1,87 +1,87 @@
 <?php
 include "akses.php";
-if ($akses['jabatan'] <> "ADMIN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses['hak_akses'] <> "KEUANGAN" and $akses['hak_akses'] <> "ADMIN"){header("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
 include "mainhead.php";
 
 $code =  mt_rand(100, 999);
 ?>
-
-    <table class="table-main">
-        <tr width="95%">
-            <td style="padding:10px;"><a href="list-produk" tooltip="Kembali ke list barang" flow="right"><i class="fa fa-arrow-left" style="color:grey;font-size:22px;"></i></a> &nbsp; &nbsp; &nbsp; <font size="4" color="#5b8ff5"><b>Tambah Baru</b></font></td>  
-        </tr>
-            <form method="post" action="action/add-new-product" enctype="multipart/form-data">
-                    <tr>
-                        <td style="padding:10px;" colspan="2">
-                            <b>Foto</b>
-                            <br><input type="file" name="doc1">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding:10px;"><b>Informasi Barang</b></td>
-                    </tr>
-                    <tr>
-                        <td>Kode Barang
-                        <br><input type="text" name="id_produk" autocomplete="off" required></td>
-                        <td colspan="2">Nama Barang
-                        <br><input type="text" name="nama" autocomplete="off" required></td> 
-                    </tr>
-                    <tr>
-                        <td>Kategori
-                        <br>
-                            <select name="kategori" id="kategori" autocomplete="off" required>
+    <div class="container">
+        <table class="table-main">
+            <tr width="95%">
+                <td style="padding:10px;"><a href="list-produk" tooltip="Kembali ke list barang" flow="right"><i class="fa fa-arrow-left" style="color:grey;font-size:22px;"></i></a> &nbsp; &nbsp; &nbsp; <font size="4" color="#5b8ff5"><b>Tambah Baru</b></font></td>  
+            </tr>
+                <form method="post" action="action/add-new-product" enctype="multipart/form-data">
+                        <tr>
+                            <td style="padding:10px;" colspan="1">
+                                <b>Foto</b>
+                                <br><input type="file" name="doc1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px;"><b>Informasi Barang</b></td>
+                        </tr>
+                        <tr>
+                            <td>Kode Barang
+                            <br><input type="text" name="id_produk" autocomplete="off" required></td>
+                            <td colspan="2">Nama Barang
+                            <br><input type="text" name="nama" autocomplete="off" required></td> 
+                        </tr>
+                        <tr>
+                            <td>Kategori
+                            <br>
+                                <select name="kategori" id="kategori" autocomplete="off" required>
+                                    <option value=""></option>
+                                    <option value="ALKES">ALKES</option>
+                                    <option value="OBAT OBATAN">OBAT OBATAN</option>
+                                    <option value="MAKANAN">MAKANAN</option>
+                                    <option value="MINUMAN">MINUMAN</option>
+                                    <option value="PERLENGKAPAN">PERLENGKAPAN</option>
+                                </select>
+                            </td>
+                            <td>Satuan Jual
+                                <br><select name="satuan" id="satuan" autocomplete="off" required>
                                 <option value=""></option>
-                                <option value="ALKES">ALKES</option>
-                                <option value="OBAT OBATAN">OBAT OBATAN</option>
-                                <option value="MAKANAN">MAKANAN</option>
-                                <option value="MINUMAN">MINUMAN</option>
-                                <option value="PERLENGKAPAN">PERLENGKAPAN</option>
-                            </select>
-                        </td>
-                        <td>Satuan Jual
-                            <br><select name="satuan" id="satuan" autocomplete="off" required>
-                            <option value=""></option>
-                            <option value="BOTOL">BOTOL</option>
-                            <option value="BOX">BOX</option>
-                            <option value="KAPLET">KAPLET</option>
-                            <option value="PCS">PCS</option>
-                            <option value="SACHET">SACHET</option>
-                            <option value="STRIP">STRIP</option>
-                            <option value="TUBE">TUBE</option>
-                            </select>
-                        </td>
-                        <td>Pilih Supplier
-                        <br><select name="id_supplier" autocomplete="off" required>
-                            <option value=""></option>
-                            <?php
-                            $query=mysqli_query($koneksi, "SELECT * FROM db_supplier");
-                            while ($record=mysqli_fetch_array($query)){
-                                echo "<option value='".$record['id_user']."'>".$record['nama']."</option>";
-                            }
-                            ?>
-                            
-                            </select>
-                        </td>   
-                    </tr>
-                    <tr>
-                        <td >Harga Beli Satuan <i>(incl ppn)</i>
-                            <br><input type="text" name="harga_beli" id="tanpa-rupiah1" autocomplete="off">
-                        </td>
-                        <td >Harga Jual Satuan
-                            <br><input type="text" name="harga_jual" id="tanpa-rupiah2" autocomplete="off">
-                        </td>
-                        <td >Minimum Stock
-                            <br><input type="text" name="min_stok" id="tanpa-rupiah3" autocomplete="off">
-                        </td>
-                    </tr>
-                    <tr width="95%" align="center">
-                        <td colspan="3">&nbsp;</td></tr>
-                        <td colspan="3" align="right" style="padding:10px;"><fieldset><button name="submit" type="submit" id="contactus-submit" data-submit="...Sending"><i id="icon" class=""></i> Submit</button></td></tr>
-                    </tr>
-            </form>
+                                <option value="BOTOL">BOTOL</option>
+                                <option value="BOX">BOX</option>
+                                <option value="KAPLET">KAPLET</option>
+                                <option value="PCS">PCS</option>
+                                <option value="SACHET">SACHET</option>
+                                <option value="STRIP">STRIP</option>
+                                <option value="TUBE">TUBE</option>
+                                </select>
+                            </td>
+                            <td>Pilih Supplier
+                            <br><select name="id_supplier" autocomplete="off" required>
+                                <option value=""></option>
+                                <?php
+                                $query=mysqli_query($koneksi, "SELECT * FROM db_supplier");
+                                while ($record=mysqli_fetch_array($query)){
+                                    echo "<option value='".$record['id_user']."'>".$record['nama']."</option>";
+                                }
+                                ?>
+                                
+                                </select>
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td >Harga Beli Satuan <i>(incl ppn)</i>
+                                <br><input type="text" name="harga_beli" id="tanpa-rupiah1" autocomplete="off">
+                            </td>
+                            <td >Harga Jual Satuan
+                                <br><input type="text" name="harga_jual" id="tanpa-rupiah2" autocomplete="off">
+                            </td>
+                            <td >Minimum Stock
+                                <br><input type="text" name="min_stok" id="tanpa-rupiah3" autocomplete="off">
+                            </td>
+                        </tr>
+                        <tr width="95%" align="center">
+                            <td colspan="3">&nbsp;</td></tr>
+                            <td colspan="3" align="right" style="padding:10px;"><fieldset><button name="submit" type="submit" id="contactus-submit" data-submit="...Sending"><i id="icon" class=""></i> Submit</button></td></tr>
+                        </tr>
+                </form>
 
-    </table>
-</div>
+        </table>
+    </div>
 
 <script type='text/javascript'>
  /* Tanpa Rupiah */

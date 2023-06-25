@@ -4,10 +4,7 @@ if ($akses['hak_akses'] <> "KEUANGAN" and $akses['hak_akses'] <> "ADMIN"){header
 include "mainhead.php";
 ?>
 
-<style>
-  
-</style>
-
+<div class="container">
 <table class="table-main">
 <td style="padding:20px;">
 <table style="width:95%;padding:20px;margin-top:30px;">
@@ -19,7 +16,7 @@ include "mainhead.php";
 
 <table id="dataTable" style="width:95%;padding:20px;margin-top:20px;">
 
-<?php require "./action/paging-list-produk.php";?>
+<?php require "./paging/paging-list-produk.php";?>
 </table>
 
   <div id="paging-button" class="d-flex flex-row">
@@ -33,8 +30,7 @@ include "mainhead.php";
     
 </td>
 </table>
-
-<div style="height:45px;"></div>
+</div>
 
 <script>
 $(document).ready(function(){

@@ -20,29 +20,23 @@
     $no = ($size*($halaman-1));
 	while($record = mysqli_fetch_array($data_produk)){
         $no++;
-        $sqlpengunjung    = "select sum(qty) kunjung from db_penjualan where id_produk = '$record[id_produk]' and status = '1'";
-        $resultpengunjung = mysqli_query($koneksi,$sqlpengunjung);
-        $pengunjung1      = mysqli_fetch_object($resultpengunjung);
-        $terjual          = $pengunjung1->kunjung;
+        $sqlTerjual    = "select sum(qty) total_terjual from db_penjualan where id_produk = '$record[id_produk]' and status = '1'";
+        $queryTerjual = mysqli_query($koneksi,$sqlTerjual);
+        $resultTerjual      = mysqli_fetch_array($queryTerjual);
+        $terjual          = $resultTerjual["total_terjual"];
         $terjualrp        = number_format($terjual,0,",",".");
 
         $min_stokrp  = number_format($record['min_stok'],0,",",".");
         $harga_belirp  = number_format($record['harga_beli'],0,",",".");
         $harga_jualrp  = number_format($record['harga_jual'],0,",",".");
 
-        $sqlpengunjung    = "select sum(jumlah) kunjung from db_stock_produk where id_produk = '$record[id_produk]'";
-        $resultpengunjung = mysqli_query($koneksi,$sqlpengunjung);
-        $pengunjung1      = mysqli_fetch_object($resultpengunjung);
-        $jml_stock        = $pengunjung1->kunjung;
+        $sqlStock    = "select sum(jumlah) stock from db_stock_produk where id_produk = '$record[id_produk]'";
+        $queryStock = mysqli_query($koneksi,$sqlStock);
+        $resultStock     = mysqli_fetch_object($queryStock);
+        $jml_stock        = $resultStock->stock;
         $jml_stockrp      = number_format($jml_stock,0,",",".");
 
-        $sqlpengunjung    = "select sum(qty) kunjung from db_penjualan where id_produk = '$record[id_produk]' and status = '1'";
-        $resultpengunjung = mysqli_query($koneksi,$sqlpengunjung);
-        $pengunjung2      = mysqli_fetch_object($resultpengunjung);
-        $jml_terjual      = $pengunjung2->kunjung;
-        $jml_terjualrp    = number_format($jml_terjual,0,",",".");
-
-        $sisa_stock       = $jml_stock - $jml_terjual;
+        $sisa_stock       = $jml_stock - $terjual;
         $sisa_stockrp     = number_format($sisa_stock,0,",",".");
 
         echo "
