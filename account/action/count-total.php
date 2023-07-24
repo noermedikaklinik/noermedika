@@ -13,6 +13,6 @@
     $resultPemeriksaan = mysqli_query($koneksi, $selectQuery);
     $totalPemeriksaan = mysqli_fetch_array($resultPemeriksaan)["total"];
     $total = $total+$totalPemeriksaan;
-    $ppn = $total*11/100;
+    $ppn = ceil(($total*11/100)/1000)*1000;
     $grand_total = $total+$ppn;
 ?>
