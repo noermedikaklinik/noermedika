@@ -5,9 +5,9 @@
     $cash_terima   = $_POST['cash_terima'];
     require_once('./count-total.php');
     
-    if ($total > $cash_terima)  {header ("Location:../pembayaran?message=Nominal Pembayaran Tidak Sesuai&alert=alert alert-danger"); exit;}
-    if ($total < $cash_terima)  {$cash_terima2 = $cash_terima;$cash_return   = $cash_terima - $total;}
-    if ($total == $cash_terima) {$cash_terima2 = $cash_terima;$cash_return   = $cash_terima - $total;}
+    if ($grand_total > $cash_terima)  {header ("Location:../pembayaran?message=Nominal Pembayaran Tidak Sesuai&alert=alert alert-danger"); exit;}
+    if ($grand_total < $cash_terima)  {$cash_terima2 = $cash_terima;$cash_return   = $cash_terima - $grand_total;}
+    if ($grand_total == $cash_terima) {$cash_terima2 = $cash_terima;$cash_return   = $cash_terima - $grand_total;}
 
     $now   = date("Y-m-d");
     $nowString = date("Ymd");
@@ -25,11 +25,21 @@
     }
     $nota = "{$nowString}APT{$formattedUrut}";
     $sqlInsertPembayaran = "INSERT INTO db_pembayaran 
-    (nota, urut, grand_total,cash_terima,cash_return,nama,hp,status,id_user,ppn, tanggal) VALUES 
-    ('$nota', $urut, $total,$cash_terima, $cash_return, '$nama', '$hp', 1, $id_user, $ppn, '$now')";
+    (nota, urut, total,grand_total,cash_terima,cash_return,nama,hp,status,id_user,ppn, tanggal) VALUES 
+    ('$nota', $urut, $total,$grand_total,$cash_terima, $cash_return, '$nama', '$hp', 1, $id_user, $ppn, '$now')";
     mysqli_query($koneksi, $sqlInsertPembayaran) or die(mysqli_error($koneksi));
     $idPembayaran = mysqli_insert_id($koneksi);
-    $updatePenjualan = "UPDATE db_penjualan SET status=1, id_pembayaran=$idPembayaran,nota='$nota' WHERE status=0";
+    
+    #penjualan dengan status 0 adalah pembayaran yang belum dibayar
+    $updatePenjualan = "UPDATE db_penjualan SET status=2, id_pembayaran=$idPembayaran,nota='$nota' WHERE status=0";
     mysqli_query($koneksi, $updatePenjualan) or die(mysqli_error($koneksi));
+
+    #pendaftaran dengan status 1 adalah pembayaran yang sedang dibayar
+    $updatePendaftaran = "UPDATE db_pendaftaran SET is_paid=2, id_pembayaran=$idPembayaran WHERE is_paid=1";
+    mysqli_query($koneksi, $updatePendaftaran) or die(mysqli_error($koneksi));
+
+    #resep dengan status 1 adalah resep yang sedang di bayar
+    $updateResep = "UPDATE db_resep SET status = 2 WHERE status = 1";
+    mysqli_query($koneksi, $updateResep);
     header("location:../print-nota?nota=$nota");
 ?>
