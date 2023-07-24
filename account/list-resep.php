@@ -14,11 +14,11 @@ include "mainhead.php";
   </table>
 
     <div id="paging-button" class="d-flex flex-row">
-    <button id = 'first-button' class='pagination-button'>first page</button>
+      <button id='first-button' class='pagination-button'>first page</button>
       <button id='prev-button' class='pagination-button'>prev</button>
-      <button id="page-number" class='pagination-button' disabled>1</button>
-      <button id = 'next-button' class='pagination-button'>next</button>
-      <button id = 'last-button' class='pagination-button'>last page</button>
+      <button id='page-number' class='pagination-button' disabled>1</button>
+      <button id='next-button' class='pagination-button'>next</button>
+      <button id='last-button' class='pagination-button'>last page</button>
     </div>
   <div style="height:35px;"></div>
       

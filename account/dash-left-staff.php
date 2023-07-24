@@ -1,5 +1,5 @@
 <td valign="top">
-    <table align="center" style="width:100%;height:100px;background:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);border-radius:10px;">
+    <table class="custom-card">
         <td style="padding:20px;"><table width="100%">
         <td colspan="2" align="center"><hr style="border:0px;height:1px;background:#d1d1d1;"></td></tr>
         <td style="width:25%;">ID Karyawan</td>
@@ -11,27 +11,9 @@
         <td colspan="2" align="center"><hr style="border:0px;height:1px;background:#d1d1d1;"></td></tr>
         <td colspan="2">
             <script>
-            function absensi_karyawan(bookURL){window.open(bookURL,"bookDetails","width=750,height=550,top=100px,left=400px,left=400px;");}
             function lap_penjualan_produk(bookURL){window.open(bookURL,"bookDetails","width=650,height=750,top=100px,left=400px,left=400px;");}
             </script>
             <table style="width:100%;padding:10px;margin-top:20px;">
-                <?php
-                if($akses["hak_akses"] == "APOTEKER"){
-                    echo "<td align='center' style='width:25%;padding:10px;'>
-                            <a href='kasir?kategori_cust=UMUM' tooltip='Buat Transaksi Baru Umum' flow='left'>
-                                <i class='fa fa-shopping-cart' style='color:green;font-size:27px;'></i>
-                            </a>
-                            <br>Umum
-                        </td>
-                        <td align='center' style='width:25%;padding:10px;'>
-                            <a href='list-resep?kategori_cust=RESEP' tooltip='Buat Transaksi Baru Resep Dokter' flow='left'>
-                                <i class='fa fa-file-text-o' style='color:green;font-size:27px;'></i>
-                            </a>
-                            <br>Resep
-                        </td>";
-                }
-                
-                ?>
                 
                 <td align="center" style="width:25%;padding:10px;" onclick="return lap_penjualan_produk('lap-penjualan-produk')">
                     <a tooltip='Laporan Penjualan' flow='left' disabled><i class="fa fa-print" style="color:purple;font-size:27px;"></i></a>

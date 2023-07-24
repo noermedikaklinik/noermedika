@@ -10,7 +10,7 @@ $pasien = mysqli_fetch_array($queryPasien);
 $id_pasien= $pasien['no'];
 $query_pemeriksaan = mysqli_query($koneksi, "SELECT * FROM db_resep WHERE id_pasien = '$id_user' ORDER BY tanggal, no desc") or die(mysqli_error($koneksi))
 ?>
-<form method = "post" action="./action/dokter-resep.php">
+<form method = "post" action="./action/dokter-resep.php" class="container">
   <input type="hidden" name="id_pendaftaran" value = "<?php echo $id_pendaftaran; ?>"/>
 <table class="table-main">
   <tr>

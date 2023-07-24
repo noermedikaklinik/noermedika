@@ -18,6 +18,13 @@
                             WHERE status = 0
                             order by tanggal asc limit $start, $size") or die(mysqli_error($koneksi));
     $no = ($size*($halaman-1));
+    if(mysqli_num_rows($data_resep) == 0){
+        echo "
+            <tr>
+                <td colspan=6>Tidak ada resep yang belum terbayar</td>
+            </tr>
+        ";
+    }
 	while($record = mysqli_fetch_array($data_resep)){
         $no++;
         if($record['status'] == 0){

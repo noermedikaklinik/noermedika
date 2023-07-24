@@ -8,7 +8,7 @@ if(!isset($_GET['no_rekam_medis'])){
 }
 include "mainhead.php";
 ?>
-<form method = "post" action="./action/daftar.php">
+<form method = "post" action="./action/daftar.php" class="container">
 <table class="table-main">
 <td style="padding:20px;">
 <table style="width:95%;padding:20px;margin-top:30px;">

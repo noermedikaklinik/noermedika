@@ -307,8 +307,8 @@ button{
     font-size: 14px;
     font-family:arial;
     background: white;
-    color: #74b9ff !important;
-    border: #74b9ff 2px solid !important;
+    color: #1d3565 !important;
+    border: #1d3565 2px solid !important;
     border-radius: 10px;
     padding: 10px 20px;
     cursor:pointer;
@@ -317,7 +317,7 @@ button{
     transition: 0.5s;
 }
 button:hover{
-    background: #74b9ff;
+    background: #1d3565;
     color: white !important;
 }
 
@@ -418,13 +418,13 @@ fieldset {
 .pagination-button{
   width: 70px !important;
   background-color: white;
-  border: #2d3436 2px solid;
+  border: #1d3565 2px solid;
   border-radius: 0;
   padding: 2px 0px;
   height: 30px;
 }
 .pagination-button:hover{
-  background-color: #2d3436;
+  background-color: #1d3565;
   color: white;
 }
 #paging-button{
@@ -476,4 +476,19 @@ td.input{
 }
 .custom-space{
   height: 80px;
+}
+.custom-card{
+  width:50%;background:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);border-radius:10px;
+}
+.icon-button a{
+  color:var(--gray);
+}
+.w-25{
+  width: 25%;
+}
+.p-10px{
+  padding: 10px;
+}
+#myTable td{
+  border:1px solid #d1d1d1;padding:10px;
 }
