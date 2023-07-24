@@ -7,6 +7,8 @@ $trx       = mysqli_fetch_assoc($result1);
 
 $cash_terimarp    = number_format($trx["cash_terima"],0,",",".");
 $cash_returnrp    = number_format($trx["cash_return"],0,",",".");
+$total = number_format($trx["total"],0,",",".");
+$ppn = number_format($trx["ppn"],0,",",".");
 
 $day       = date("D");
 $tglnow    = date("d/M/Y");
@@ -81,14 +83,18 @@ body{font-family:verdana, sans-serif;font-size:10px; color:#ggg;background:#ffff
 </table>
 
 <table style="width:100%;padding:10px;margin-top:-20px;">
-    <tr class="header" height="35" style="background:#1d3565;color:white;">
+  <tr class="header" height="35" style="background:#1d3565;color:white;">
     <td style="width:85%;padding:5px;font-weight:bold;">Items</td>
-    <td style="width:10%;padding:5px;font-weight:bold;"><center>Qty</center></td>
+    <td style="width:10%;padding:5px;font-weight:bold;" class="text-center">Qty</td>
   </tr>
 
 <?php
 $query=mysqli_query($koneksi, "SELECT * FROM db_penjualan where nota = '$nota' order by no desc") or die(mysqli_error($koneksi));
 $no = 0;
+
+if(mysqli_num_rows($query)==0){
+  echo "<tr><td colspan=2 class='text-center'> Tidak Pembelian produk </td></tr>";
+}
 while ($record=mysqli_fetch_array($query)){
 $no++;
 
@@ -101,35 +107,72 @@ echo "
 </tr>";
 }
 ?>
+<table style="width:100%;padding:10px;margin-top:-20px;margin-top:10px;">
+  <tr class="header" height="35" style="background:#1d3565;color:white;">
+    <td style="width:85%;padding:5px;font-weight:bold;">Dokter</td>
+    <td style="width:10%;padding:5px;font-weight:bold;" class="text-center">Biaya</td>
+  </tr>
+<?php
+$query=mysqli_query($koneksi, "SELECT db_dokter.* FROM db_pendaftaran 
+INNER JOIN db_pembayaran on db_pembayaran.no = db_pendaftaran.id_pembayaran
+INNER JOIN db_pendaftaran_tindakan on db_pendaftaran_tindakan.id_pendaftaran = db_pendaftaran.no
+INNER JOIN db_dokter on db_dokter.no = db_pendaftaran_tindakan.id_dokter
+WHERE nota = '$nota' order by no desc") or die(mysqli_error($koneksi));
+$no = 0;
+if(mysqli_num_rows($query)==0){
+  echo "<tr><td colspan=2 class='text-center'> Tidak Melakukan Pemeriksaan </td></tr>";
+}
+while ($record=mysqli_fetch_array($query)){
+$no++;
+
+$sub_total_itemrp    = number_format($record["harga"],0,",",".");
+
+echo "
+<tr>
+  <td>$record[nama]</td>
+  <td valign='top' align='center'>$record[harga]</td>
+</tr>";
+}
+?>
 <td colspan="4" align="right"><hr style="border:1px solid grey;"></td></tr>
 </table>
 
 <?php
-$sqlpengunjung    = "select sum(sub_total) kunjung from db_penjualan where nota = '$nota'";
+$sqlpengunjung    = "select * from db_pembayaran where nota = '$nota'";
 $resultpengunjung = mysqli_query($koneksi, $sqlpengunjung) or die(mysqli_error($koneksi));
 $pengunjung1      = mysqli_fetch_object($resultpengunjung);
-$grand_total      = $pengunjung1->kunjung;
+$grand_total      = $pengunjung1->grand_total;
 $grand_totalrp    = number_format($grand_total,0,",",".");
 ?>
 <table width="100%" align="center" style="padding:10px;">
-<tr>
-    <td align="right" style="width:80%;font-weight:bold;">Grand Total</td>
+  <tr>
+    <td class="text-right" style="width:80%;font-weight:bold;">Total</td>
+    <td> : </td>
+    <td class="text-right"> Rp. <?php echo "$total"; ?></td>
+  </tr>
+  <tr>
+    <td class="text-right" style="width:80%;font-weight:bold;">PPN</td>
+    <td> : </td>
+    <td class="text-right"> Rp. <?php echo "$ppn"; ?></td>
+  </tr>
+  <tr>
+    <td class="text-right" style="width:80%;font-weight:bold;">Grand Total</td>
     <td> : </td>
     <td class="text-right"> Rp. <?php echo "$grand_totalrp"; ?></td>
   </tr>
   <tr>
-    <td align="right" style="width:80%;font-weight:bold;">Pembayaran</td>
+    <td class="text-right" style="width:80%;font-weight:bold;">Pembayaran</td>
     <td> : </td>
     <td class="text-right"> Rp. <?php echo "$cash_terimarp"; ?></td>
   </tr>
   <tr>
-    <td align="right" style="width:80%;font-weight:bold;">Kembali</td>
+    <td class="text-right" style="width:80%;font-weight:bold;">Kembali</td>
     <td> : </td>
     <td class="text-right"> Rp. <?php echo "$cash_returnrp"; ?></td>
   </tr>
 
-<td colspan="3" align="right"><hr style="border:1px solid grey;"></td></tr>
-<td colspan="3" align="center" style="font-size:8px;"><i>Barang yang telah dibeli tidak dapat dikembalikan</i></td></tr>
+<td colspan="3"  class="text-right"><hr style="border:1px solid grey;"></td></tr>
+<td colspan="3" class="text-center" style="font-size:8px;"><i>Barang yang telah dibeli tidak dapat dikembalikan</i></td></tr>
 </table>
 
 <div style="height:25px;"></div>

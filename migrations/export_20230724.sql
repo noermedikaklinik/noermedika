@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Jul 2023 pada 02.09
+-- Waktu pembuatan: 24 Jul 2023 pada 02.51
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.12
 
@@ -293,24 +293,35 @@ CREATE TABLE `db_pembayaran` (
   `status` int(1) NOT NULL,
   `id_user` int(11) NOT NULL,
   `ppn` int(11) NOT NULL,
-  `tanggal` date DEFAULT NULL
+  `tanggal` date DEFAULT NULL,
+  `total` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `db_pembayaran`
 --
 
-INSERT INTO `db_pembayaran` (`no`, `nota`, `urut`, `grand_total`, `cash_terima`, `cash_return`, `nama`, `hp`, `status`, `id_user`, `ppn`, `tanggal`) VALUES
-(2, '20230724APT0001', 1, 10000, 11000, 1000, 'Raihan', '085822567649', 1, 3, 11000, '2023-07-24'),
-(6, '20230724APT0002', 2, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24'),
-(7, '20230724APT0003', 3, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24'),
-(8, '20230724APT0004', 4, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24'),
-(9, '20230724APT0005', 5, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24'),
-(10, '20230724APT0006', 6, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24'),
-(11, '20230724APT0007', 7, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24'),
-(12, '20230724APT0008', 8, 200000, 300000, 100000, 'RAIHAN', '085822567649', 1, 3, 22000, '2023-07-24'),
-(13, '20230724APT0009', 9, 200000, 300000, 100000, '', '', 1, 3, 22000, '2023-07-24'),
-(14, '20230724APT0010', 10, 18000, 20000, 2000, 'RAIHAN', '080808', 1, 3, 1980, '2023-07-24');
+INSERT INTO `db_pembayaran` (`no`, `nota`, `urut`, `grand_total`, `cash_terima`, `cash_return`, `nama`, `hp`, `status`, `id_user`, `ppn`, `tanggal`, `total`) VALUES
+(2, '20230724APT0001', 1, 10000, 11000, 1000, 'Raihan', '085822567649', 1, 3, 11000, '2023-07-24', NULL),
+(6, '20230724APT0002', 2, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24', NULL),
+(7, '20230724APT0003', 3, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24', NULL),
+(8, '20230724APT0004', 4, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24', NULL),
+(9, '20230724APT0005', 5, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24', NULL),
+(10, '20230724APT0006', 6, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24', NULL),
+(11, '20230724APT0007', 7, 56000, 100000, 44000, 'RA', '09', 1, 3, 6160, '2023-07-24', NULL),
+(12, '20230724APT0008', 8, 200000, 300000, 100000, 'RAIHAN', '085822567649', 1, 3, 22000, '2023-07-24', NULL),
+(13, '20230724APT0009', 9, 200000, 300000, 100000, '', '', 1, 3, 22000, '2023-07-24', NULL),
+(14, '20230724APT0010', 10, 18000, 20000, 2000, 'RAIHAN', '080808', 1, 3, 1980, '2023-07-24', NULL),
+(15, '20230724APT0011', 11, 161000, 200000, 39000, 'RAIHAN', '123456', 1, 3, 17710, '2023-07-24', NULL),
+(16, '20230724APT0012', 12, 150000, 200000, 50000, 'RAIHAN', '090909', 1, 3, 16500, '2023-07-24', NULL),
+(17, '20230724APT0013', 13, 166500, 200000, 50000, 'RAIHAN', '0909', 1, 3, 16500, '2023-07-24', NULL),
+(18, '20230724APT0014', 14, 166500, 200000, 33500, 'RAIHAN', '090909', 1, 3, 16500, '2023-07-24', NULL),
+(19, '20230724APT0015', 15, 166500, 200000, 33500, 'RAIHAN', '080808', 1, 3, 16500, '2023-07-24', NULL),
+(20, '20230724APT0016', 16, 166500, 200000, 33500, 'RAIHAN', '080808', 1, 3, 16500, '2023-07-24', NULL),
+(21, '20230724APT0017', 17, 166500, 200000, 33500, 'TEST', '0808', 1, 3, 16500, '2023-07-24', NULL),
+(22, '20230724APT0018', 18, 166500, 200000, 33500, 'RAIHAN', '0909', 1, 3, 16500, '2023-07-24', NULL),
+(23, '20230724APT0019', 19, 166500, 200000, 33500, 'RAIHAN', '0909', 1, 3, 16500, '2023-07-24', NULL),
+(24, '20230724APT0020', 20, 353000, 400000, 47000, 'RAIHAN', '0890808', 1, 3, 35000, '2023-07-24', 318000);
 
 -- --------------------------------------------------------
 
@@ -378,7 +389,9 @@ INSERT INTO `db_pendaftaran` (`no`, `id_pasien`, `id_pembayaran`, `tanggal`, `ur
 (12, 1, NULL, '2023-05-28', 1, 0),
 (13, 1, NULL, '2023-06-02', 1, 0),
 (14, 1, NULL, '2023-07-19', 1, 0),
-(15, 1, NULL, '2023-07-20', 1, 0);
+(15, 1, NULL, '2023-07-20', 1, 0),
+(16, 1, 23, '2023-07-24', 1, 2),
+(17, 1, 24, '2023-07-24', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -421,7 +434,12 @@ INSERT INTO `db_pendaftaran_tindakan` (`no`, `id_pendaftaran`, `id_dokter`, `is_
 (26, 12, 2, 0),
 (27, 13, 1, 1),
 (28, 15, 1, 1),
-(29, 15, 2, 0);
+(29, 15, 2, 0),
+(30, 16, 1, 1),
+(31, 16, 2, 0),
+(32, 17, 1, 1),
+(33, 17, 2, 0),
+(34, 17, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -455,7 +473,10 @@ INSERT INTO `db_penjualan` (`no`, `jenis_penjualan`, `nota`, `id_produk`, `id_ja
 (8, 'produk', '20230724APT0007', '1', NULL, 'CALADINE LOTION 60ML  TEST UBAH', 18000, 2, 36000, '3', '1', 11),
 (9, 'jasa', '20230724APT0008', NULL, 56, ' Ex 03', 200000, 1, 200000, '3', '1', 12),
 (10, 'jasa', '20230724APT0009', NULL, 56, ' Ex 03', 200000, 1, 200000, '3', '1', 13),
-(11, 'produk', '20230724APT0010', '1', NULL, 'CALADINE LOTION 60ML  TEST UBAH', 18000, 1, 18000, '3', '1', 14);
+(11, 'produk', '20230724APT0010', '1', NULL, 'CALADINE LOTION 60ML  TEST UBAH', 18000, 1, 18000, '3', '1', 14),
+(12, 'produk', '20230724APT0011', '4', NULL, 'LOSTACEF 125', 11000, 1, 11000, '3', '1', 15),
+(13, 'jasa', '20230724APT0020', NULL, 120, 'Audiometri', 100000, 1, 100000, '3', '2', 24),
+(14, 'produk', '20230724APT0020', '1', NULL, 'CALADINE LOTION 60ML  TEST UBAH', 18000, 1, 18000, '3', '2', 24);
 
 -- --------------------------------------------------------
 
@@ -1438,7 +1459,9 @@ CREATE TABLE `db_resep` (
 
 INSERT INTO `db_resep` (`no`, `id_dokter`, `id_pendaftaran`, `id_pasien`, `id_nota`, `nama_dokter`, `poli`, `resep`, `tanggal`, `status`) VALUES
 (1, 1, 13, 1, NULL, 'DR RHAMA', 'UMUM', 'test', '2023-06-02', 0),
-(2, 1, 15, 1, NULL, 'DR RHAMA', 'UMUM', 'Parasetamol 2', '2023-07-20', 0);
+(2, 1, 15, 1, NULL, 'DR RHAMA', 'UMUM', 'Parasetamol 2', '2023-07-20', 0),
+(3, 1, 16, 1, NULL, 'DR RHAMA', 'UMUM', '123123', '2023-07-24', 2),
+(4, 1, 17, 1, NULL, 'DR RHAMA', 'UMUM', '123123', '2023-07-24', 2);
 
 -- --------------------------------------------------------
 
@@ -3719,7 +3742,7 @@ ALTER TABLE `db_pasien`
 -- AUTO_INCREMENT untuk tabel `db_pembayaran`
 --
 ALTER TABLE `db_pembayaran`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `db_pemeriksaan`
@@ -3731,19 +3754,19 @@ ALTER TABLE `db_pemeriksaan`
 -- AUTO_INCREMENT untuk tabel `db_pendaftaran`
 --
 ALTER TABLE `db_pendaftaran`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `db_pendaftaran_tindakan`
 --
 ALTER TABLE `db_pendaftaran_tindakan`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `db_penjualan`
 --
 ALTER TABLE `db_penjualan`
-  MODIFY `no` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `no` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `db_produk`
@@ -3761,7 +3784,7 @@ ALTER TABLE `db_rekam_medis`
 -- AUTO_INCREMENT untuk tabel `db_resep`
 --
 ALTER TABLE `db_resep`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `db_stock_produk`

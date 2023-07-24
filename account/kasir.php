@@ -126,7 +126,7 @@ include "mainhead.php";
         </div>
         <div class="row">
           <div class="col-6"></div>
-          <div class="col-3">Grand Total</div>
+          <div class="col-3">Total</div>
           <div class="col-3">&nbsp; Rp. <?php 
             //$total didapat dari action/count-total.php
             $totalFormatted  = number_format($total,0,",",".");
