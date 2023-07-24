@@ -1,6 +1,5 @@
 <?php
 include "akses.php";
-if ($akses["jabatan"] <> "KEUANGAN"){echo "<br><br><br><br>Akses tidak diijinkan";}
 
 $day       = date("D");
 $tglnow    = date("Y-m-d");
@@ -127,20 +126,20 @@ echo "
 }
 
 
-$sqlpengunjung    = "select sum(sub_total_jual) kunjung from db_penjualan where id_user like '$id_user' and tanggal like '$tgl1' and jenis_pembayaran like 'CASH' and status_setor like '0'";
-$resultpengunjung = mysqli_query($koneksi,$sqlpengunjung);
+$sqlpengunjung    = "select sum(sub_total) kunjung from db_penjualan where id_user like '$id_user' and tanggal like '$tgl1' and jenis_pembayaran like 'CASH' and status_setor like '0'";
+$resultpengunjung = mysqli_query($koneksi,$sqlpengunjung) or die(mysqli_error($koneksi));
 $pengunjung1      = mysqli_fetch_object($resultpengunjung);
 $total_cash   = $pengunjung1->kunjung;
 $total_cashrp = number_format($total_cash,0,",",".");
 
 $sqlpengunjung    = "select sum(sub_total_jual) kunjung from db_penjualan where id_user like '$id_user' and tanggal like '$tgl1' and jenis_pembayaran like 'DEBIT' and status_setor like '0'";
-$resultpengunjung = mysqli_query($koneksi, $sqlpengunjung);
+$resultpengunjung = mysqli_query($koneksi, $sqlpengunjung) or die(mysqli_error($koneksi));
 $pengunjung2      = mysqli_fetch_object($resultpengunjung);
 $total_debit      = $pengunjung2->kunjung;
 $total_debitrp    = number_format($total_debit,0,",",".");
 
 $sqlpengunjung    = "select sum(sub_total_jual) kunjung from db_penjualan where id_user like '$id_user' and tanggal like '$tgl1' and jenis_pembayaran like 'KARTU KREDIT' and status_setor like '0'";
-$resultpengunjung = mysqli_query($koneksi, $sqlpengunjung);
+$resultpengunjung = mysqli_query($koneksi, $sqlpengunjung) or die(mysqli_error($koneksi));
 $pengunjung3      = mysqli_fetch_object($resultpengunjung);
 $total_kredit     = $pengunjung3->kunjung;
 $total_kreditrp   = number_format($total_kredit,0,",",".");

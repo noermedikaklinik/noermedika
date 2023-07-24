@@ -1,6 +1,6 @@
 <?php
 include "akses.php";
-if ($akses['hak_akses'] <> "PENDAFTARAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses["hak_akses"] <> "KASIR" and $akses["hak_akses"] <> "APOTEKER" and $akses["hak_akses"] <> "ASISTEN APOTEKER" ){header ("Location:./");}
 include "mainhead.php";
 ?>
 <div class="container">
@@ -12,13 +12,10 @@ include "mainhead.php";
     <td align="left" width="95%">
         <input type="date" id="date_filter"value="<?php echo date("Y-m-d");?>">
     </td>
-    <td>
-      <a href="pendaftaran-list-pasien" class="btn btn-primary">Daftar</a>
-    </td>
 </table>
 
 <table class="table-data" id ="table-data">
-  <?php require "./paging/paging-list-pendaftaran.php";?>
+  <?php require "./paging/paging-list-pendaftaran-kasir.php";?>
 </table>
 
 <div style="height:35px;"></div>

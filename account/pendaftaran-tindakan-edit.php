@@ -1,10 +1,10 @@
 <?php
 include "akses.php";
 if ($akses['hak_akses'] <> "PENDAFTARAN"){header ("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
-if(!isset($_GET['no_pendaftaran'])){
+if(!isset($_GET['id_pendaftaran'])){
   header("Location:./pendaftaran.php");
 }else{
-  $no = $_GET['no_pendaftaran'];
+  $no = $_GET['id_pendaftaran'];
   $query_pasien = mysqli_query($koneksi, "SELECT pasien.* FROM db_pasien pasien, db_pendaftaran pendaftaran WHERE 
                       pendaftaran.id_pasien = pasien.no AND
                       pendaftaran.no = '$no'") or die(mysqli_error($koneksi));
@@ -23,7 +23,7 @@ if(!isset($_GET['no_pendaftaran'])){
 }
 include "mainhead.php";
 ?>
-<form method = "post" action="./action/daftar-edit.php">
+<form method = "post" action="./action/daftar-edit.php" class="container">
 <input type="hidden" name="id_pendaftaran" value=<?php echo "'$no'"?>>
 <table class="table-main">
 <td style="padding:20px;">
