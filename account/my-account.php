@@ -3,7 +3,7 @@ include "akses.php";
 include "mainhead.php";
 ?>
 
-
+<div class="container">
 <table width="95%" align="center" style="background:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);border-radius:10px;">
     <td>
 <table width="95%" align="center">
@@ -51,8 +51,7 @@ include "mainhead.php";
 
 </td>
 </table>
-
-<div style="height:75px;"></div>
+</div>
 
 
 <script src="../link/myjs.js"></script>

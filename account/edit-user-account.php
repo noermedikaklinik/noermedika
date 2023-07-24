@@ -13,11 +13,12 @@ $staff   = mysqli_fetch_assoc($result1);
     <input type="hidden" name="jenis" value="edit-user-account">
     <input type="hidden" name="id_user" value="<?php echo "$id_user";?>">
 
+    <div class="container">
 <table class="table-main">
 <td>
 <table width="95%" align="center">
 <td colspan="2" height="40">&nbsp;</td></tr> 
-<td width="100%" style="padding:10px;"><a href="account-list" tooltip="Kembali ke data akun karyawan" flow="right"><i class="fa fa-arrow-left" style="color:grey;font-size:27px;"></i></a> &nbsp; &nbsp; &nbsp; <font size="4" color="#5b8ff5"><b>Update Akun Karyawan</b></font></td>  
+<td width="100%" style="padding:10px;"><a href="list-account" tooltip="Kembali ke data akun karyawan" flow="right"><i class="fa fa-arrow-left" style="color:grey;font-size:27px;"></i></a> &nbsp; &nbsp; &nbsp; <font size="4" color="#5b8ff5"><b>Update Akun Karyawan</b></font></td>  
 </table>
 
 <div style="height:25px;"></div>
@@ -77,13 +78,22 @@ $staff   = mysqli_fetch_assoc($result1);
 <td colspan="3">&nbsp;</td></tr>
 <td colspan="3" align="right" style="padding:10px;"><fieldset><button name="submit" type="submit" id="contactus-submit" data-submit="...Sending"><i id="icon" class=""></i> Update</button></td></tr>
 </table>
-
-<div style="height:35px;"></div>
-
+</div>
 </td>
 </table>
-
-<div style="height:75px;"></div>
+<script>
+    $(document).ready(function(){
+        $("#hak_akses").change(function(){
+            if($("#hak_akses").val() == "DOKTER"){
+                $("#poli-column").removeClass("hidden").removeClass("block");
+                $("#harga-column").removeClass("hidden").removeClass("block");
+            }else{
+                $("#poli-column").addClass("hidden").addClass("block");
+                $("#harga-column").addClass("hidden").addClass("block");
+            }
+        })
+    })
+</script>
 
 
 

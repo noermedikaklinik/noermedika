@@ -4,7 +4,7 @@ if ($akses['hak_akses'] <> "KEUANGAN" and $akses['hak_akses'] <> "ADMIN"){header
 include "mainhead.php";
 ?>
 
-
+<div class="container">
 <table class="table-main">
 <td style="padding:20px;">
 <table style="width:95%;padding:20px;margin-top:30px;">
@@ -66,7 +66,7 @@ include "mainhead.php";
     
 </td>
 </table>
-
+</div>
 <div style="height:45px;"></div>
 
 <script>

@@ -1,6 +1,6 @@
 <?php
 include "akses.php";
-if ($akses['hak_akses'] <> "KEUANGAN" and $akses['hak_akses'] <> "ADMIN"){header("Location:./?message=Akses Tidak Diijinkan&alert=alert alert-danger");}
+if ($akses["hak_akses"] <> "KASIR" and $akses["hak_akses"] <> "APOTEKER" and $akses["hak_akses"] <> "ASISTEN APOTEKER" ){header ("Location:./");}
 include "mainhead.php";
 ?>
 
@@ -16,11 +16,11 @@ include "mainhead.php";
 
 <table id="dataTable" style="width:95%;padding:20px;margin-top:20px;">
 
-<?php require "./paging/paging-list-produk.php";?>
+<?php require "./paging/paging-list-produk-kasir.php";?>
 </table>
 
   <div id="paging-button" class="d-flex flex-row">
-  <button id = 'first-button' class='pagination-button'>first page</button>
+    <button id = 'first-button' class='pagination-button'>first page</button>
     <button id='prev-button' class='pagination-button'>prev</button>
     <button id="page-number" class='pagination-button' disabled>1</button>
     <button id = 'next-button' class='pagination-button'>next</button>

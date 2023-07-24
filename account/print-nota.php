@@ -1,13 +1,9 @@
 <?php
 include "akses.php";
-if ($akses["jabatan"] <> "KASIR" and $akses["jabatan"] <> "APOTEKER" and $akses["jabatan"] <> "ASISTEN APOTEKER"){echo "<br><br><br><br>AKSES DITOLAK";exit;}
 
 $nota      = $_GET['nota'];
-$result1   = mysqli_query($koneksi, "SELECT * FROM db_penjualan where nota like '$nota' and status like '1' and id_user like '$akses[id_user]' order by urut desc");
+$result1   = mysqli_query($koneksi, "SELECT * FROM db_pembayaran where nota like '$nota' and status like '1' and id_user like '$id_user'");
 $trx       = mysqli_fetch_assoc($result1);
-
-if ($trx["jenis_pembayaran"] == "CASH") {$tipe = "Pembayaran Tunai";}
-if ($trx["jenis_pembayaran"] == "DEBIT"){$tipe = "Pembayaran Debit";}
 
 $cash_terimarp    = number_format($trx["cash_terima"],0,",",".");
 $cash_returnrp    = number_format($trx["cash_return"],0,",",".");
@@ -91,12 +87,12 @@ body{font-family:verdana, sans-serif;font-size:10px; color:#ggg;background:#ffff
   </tr>
 
 <?php
-$query=mysqli_query($koneksi, "SELECT * FROM db_penjualan where nota like '$nota' and status like '1' and id_user like '$akses[id_user]' order by no desc");
+$query=mysqli_query($koneksi, "SELECT * FROM db_penjualan where nota = '$nota' order by no desc") or die(mysqli_error($koneksi));
 $no = 0;
 while ($record=mysqli_fetch_array($query)){
 $no++;
 
-$sub_total_itemrp    = number_format($record["sub_total_jual"],0,",",".");
+$sub_total_itemrp    = number_format($record["sub_total"],0,",",".");
 
 echo "
 <tr>
@@ -109,20 +105,31 @@ echo "
 </table>
 
 <?php
-$sqlpengunjung    = "select sum(sub_total_jual) kunjung from db_penjualan where nota like '$nota'";
-$resultpengunjung = mysqli_query($koneksi, $sqlpengunjung);
+$sqlpengunjung    = "select sum(sub_total) kunjung from db_penjualan where nota = '$nota'";
+$resultpengunjung = mysqli_query($koneksi, $sqlpengunjung) or die(mysqli_error($koneksi));
 $pengunjung1      = mysqli_fetch_object($resultpengunjung);
 $grand_total      = $pengunjung1->kunjung;
 $grand_totalrp    = number_format($grand_total,0,",",".");
 ?>
-
 <table width="100%" align="center" style="padding:10px;">
-<td align="right" style="width:60%;font-weight:bold;">Discount : 0</td></tr>
-<td align="right" style="width:60%;font-weight:bold;">Grand Total : Rp. <?php echo "$grand_totalrp"; ?></td></tr>
-<td align="right" style="width:60%;font-weight:bold;"><?php echo "$tipe"; ?> : Rp. <?php echo "$cash_terimarp"; ?></td></tr>
-<td align="right" style="width:60%;font-weight:bold;">Kembali : Rp. <?php echo "$cash_returnrp"; ?></td></tr>
-<td colspan="2" align="right"><hr style="border:1px solid grey;"></td></tr>
-<td colspan="2" align="center" style="font-size:8px;"><i>Barang yang telah dibeli tidak dapat dikembalikan</i></td></tr>
+<tr>
+    <td align="right" style="width:80%;font-weight:bold;">Grand Total</td>
+    <td> : </td>
+    <td class="text-right"> Rp. <?php echo "$grand_totalrp"; ?></td>
+  </tr>
+  <tr>
+    <td align="right" style="width:80%;font-weight:bold;">Pembayaran</td>
+    <td> : </td>
+    <td class="text-right"> Rp. <?php echo "$cash_terimarp"; ?></td>
+  </tr>
+  <tr>
+    <td align="right" style="width:80%;font-weight:bold;">Kembali</td>
+    <td> : </td>
+    <td class="text-right"> Rp. <?php echo "$cash_returnrp"; ?></td>
+  </tr>
+
+<td colspan="3" align="right"><hr style="border:1px solid grey;"></td></tr>
+<td colspan="3" align="center" style="font-size:8px;"><i>Barang yang telah dibeli tidak dapat dikembalikan</i></td></tr>
 </table>
 
 <div style="height:25px;"></div>
@@ -134,18 +141,6 @@ $grand_totalrp    = number_format($grand_total,0,",",".");
 
 <script language="javascript" type="text/javascript">
 <!--
-window.setTimeout('window.location="penjualan-produk3?nota=<?php echo "$nota";?>"; ',2000);
+window.setTimeout('window.location="kasir"',2000);
 // -->
 </script>
-
-
-
-
-
-
-
-
-
-
-
-

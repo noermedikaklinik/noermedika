@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="../link/mystyle.css?<?php echo date('m/d/Y h:i:s a', time());?>" />
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-grid.css"/>
+        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css"/>
         <script type="text/javascript">$(window).load(function() { $("#loading").fadeOut("slow"); })</script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -53,8 +53,8 @@
                     <div class="dropdown">
                     <span style="font-size:11px"><i class="fa fa-users" style="color:#1d3565;font-size:12px;"></i> PARTNER</span>
                     <div class="dropdown-content" align="left">
-                      <a href="konsulen-list" style="text-decoration:none;color:black;font-size:12px;">KONSULEN</a>
-                      <a href="supplier-list" style="text-decoration:none;color:black;font-size:12px;">SUPPLIER</a>
+                      <a href="list-konsulen" style="text-decoration:none;color:black;font-size:12px;">KONSULEN</a>
+                      <a href="list-supplier" style="text-decoration:none;color:black;font-size:12px;">SUPPLIER</a>
                     </div>
                   </div> 
              </td> 

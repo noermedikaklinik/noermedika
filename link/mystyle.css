@@ -52,38 +52,6 @@
   to {bottom: 0; opacity: 0;}
 } 
 
-@media screen and (min-width: 279px) 
-{
-*{margin:0px auto; /*supaya layer otomatis mengisi dan ke tengah*/}
-#wrapper1{width:100%;position:relative;}
-#header1{width:100%;position:fixed;height:80px;z-index:1000;}
-#header1 a.title{color:#f0f0f0; font-weight:bold; text-decoration:none; font-size:30px; line-height:60px;padding:0px 20px;}
-}
-
-@media screen and (min-width: 479px) 
-{
-*{margin:0px auto; /*supaya layer otomatis mengisi dan ke tengah*/}
-#wrapper1{width:100%;position:relative;}
-#header1{width:100%;position:fixed;height:120px;z-index:1000;}
-#header1 a.title{color:#f0f0f0; font-weight:bold; text-decoration:none; font-size:30px; line-height:60px;padding:0px 20px;}
-}
-
-@media screen and (min-width: 679px) 
-{
-*{margin:0px auto; /*supaya layer otomatis mengisi dan ke tengah*/}
-#wrapper1{width:100%;position:relative;}
-#header1{width:100%;position:fixed;height:80px;z-index:1000;}
-#header1 a.title{color:#f0f0f0; font-weight:bold; text-decoration:none; font-size:30px; line-height:60px;padding:0px 20px;}
-}
-
-@media screen and (min-width: 1280px) 
-{
-*{margin:0px auto; /*supaya layer otomatis mengisi dan ke tengah*/}
-#wrapper1{width:100%;position:relative;}
-#header1{width:100%;position:fixed;height:80px;z-index:1000;}
-#header1 a.title{color:#f0f0f0; font-weight:bold; text-decoration:none; font-size:30px; line-height:60px;padding:0px 20px;}
-}
-
 body{font-family:verdana, sans-serif;font-size:12px; color:#95a5a6}
 .link {background:#ffffff;height:50px;color:#34495e; -webkit-transition: 0.7s; transition: 0.7s;}
 .link:hover {background:#e5c309;height:40px;color:#95a5a6;}
@@ -293,7 +261,7 @@ input[type=text],input[type=password],select,input[type=number],input[type=file]
 {
     font-size: 14px;
     width: 100%;
-    padding: 15px 10px;
+    padding: 6px 12px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     -webkit-transition: 0.5s;
@@ -338,19 +306,19 @@ input[type=reset]{
 button{
     font-size: 14px;
     font-family:arial;
-    background: #8fa93a;
-    color: white;
-    border: white 0px solid;
+    background: white;
+    color: #1d3565 !important;
+    border: #1d3565 2px solid !important;
     border-radius: 10px;
-    padding: 12px 20px;
+    padding: 10px 20px;
     cursor:pointer;
     width:200px;   
-    height:50px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
 button:hover{
-    background: #75960b;
+    background: #1d3565;
+    color: white !important;
 }
 
 /* Center the image and position the close button */
@@ -422,7 +390,8 @@ fieldset {
 }
 
 .table-main{
-  width: 80%;
+  margin-top: 80px;
+  width: 100%;
   margin-bottom: 100px;
   padding: 100px 100px;
   border-radius: 10px;
@@ -449,13 +418,13 @@ fieldset {
 .pagination-button{
   width: 70px !important;
   background-color: white;
-  border: #2d3436 2px solid;
+  border: #1d3565 2px solid;
   border-radius: 0;
   padding: 2px 0px;
   height: 30px;
 }
 .pagination-button:hover{
-  background-color: #2d3436;
+  background-color: #1d3565;
   color: white;
 }
 #paging-button{
@@ -485,4 +454,41 @@ a.disabled{
 td.input{
   width:33%;
   padding:10px;
+}
+.table-data{
+  width:95%;padding:20px;margin-top:20px;
+}
+.table-data td{
+  border:1px solid #d1d1d1;padding:10px;
+}
+.table-data tr:first-child{
+  background:#1d3565;
+  color:white;
+}
+.table-data tr:first-child th{
+  width:5%;padding:10px;
+}
+.icon{
+  color:grey;font-size:27px;
+}
+.padding-10{
+  padding:10px;
+}
+.custom-space{
+  height: 80px;
+}
+.custom-card{
+  width:50%;background:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);border-radius:10px;
+}
+.icon-button a{
+  color:var(--gray);
+}
+.w-25{
+  width: 25%;
+}
+.p-10px{
+  padding: 10px;
+}
+#myTable td{
+  border:1px solid #d1d1d1;padding:10px;
 }

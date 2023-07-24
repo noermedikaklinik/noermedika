@@ -71,20 +71,6 @@ $("#contactus-submit").html('Submit');
 </table>
 
 
-<table width="95%" align="center">
-<td style="width:100%;padding:10px;">
-<?php include "frame-transaksi-penjualan.php"?>
-</td></tr>
-</table>
-
-<?php
-$sqlpengunjung    = "select sum(sub_total_jual) sum_total from db_penjualan where kode_trx like '$kode_trx' and status like '0'";
-$resultpengunjung = mysqli_query($koneksi, $sqlpengunjung);
-$pengunjung1      = mysqli_fetch_object($resultpengunjung);
-$grand_total      = $pengunjung1->sum_total;
-$grand_totalrp    = number_format($grand_total,0,",",".");
-?>
-
 <table width="93%" align="center" style="padding:10px;">
 <td align="right" style="width:80%;font-weight:bold;">Grand Total :</td>
 <td style="width:20%;font-weight:bold;"> &nbsp; Rp. <?php echo "$grand_totalrp"; ?></td></tr>
